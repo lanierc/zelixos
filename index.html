@@ -263,8 +263,15 @@
             cursor: pointer;
             transition: all 0.3s ease;
             box-shadow: var(--shadow);
+            padding-bottom: 5px;
         }
-
+        .screenshot-caption {
+            text-align: center;
+            margin-top: 10px;
+            font-weight: 500;
+            color: var(--text-dark);
+            font-size: 14px;
+        }
         .screenshot:hover {
             transform: scale(1.05);
             box-shadow: 0 12px 40px rgba(0, 102, 204, 0.25);
@@ -551,15 +558,19 @@
             <div class="screenshots-grid">
                 <div class="screenshot">
                     <img src="screenshots/desktop-view.png" alt="ZelixOS Masaüstü Görünümü" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">
+                    <div class="screenshot-caption">Masaüstü Görünümü</div>
                 </div>
                 <div class="screenshot">
                     <img src="screenshots/app-menu.png" alt="ZelixOS Uygulama Menüsü" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">
+                    <div class="screenshot-caption">Uygulama Menüsü</div>
                 </div>
                 <div class="screenshot">
                     <img src="screenshots/dark-theme.png" alt="ZelixOS Karanlık Tema" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">
+                    <div class="screenshot-caption">Karanlık Tema</div>
                 </div>
                 <div class="screenshot">
                     <img src="screenshots/zelix-tools.png" alt="ZelixOS Zelix Araçları" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">
+                    <div class="screenshot-caption">Zelix Araçları</div>
                 </div>
             </div>
         </div>
