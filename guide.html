@@ -8,13 +8,14 @@
     body {
       font-family: 'Segoe UI', sans-serif;
       margin: 0;
-      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
-      color: white;
+      background: linear-gradient(to right, #83a4d4, #b6fbff);
+      color: #333;
     }
     header {
       padding: 40px;
       text-align: center;
-      background-color: #031d30;
+      background-color: #0277bd;
+      color: white;
     }
     header h1 {
       margin: 0;
@@ -22,7 +23,7 @@
     }
     header p {
       font-size: 18px;
-      color: #aaa;
+      color: #e0e0e0;
     }
     .language-switch {
       position: absolute;
@@ -30,7 +31,7 @@
       top: 20px;
     }
     .language-switch button {
-      background: #1677c0;
+      background: #29b6f6;
       color: white;
       border: none;
       padding: 6px 12px;
@@ -43,16 +44,16 @@
       padding: 40px 20px;
     }
     .step {
-      background: rgba(255, 255, 255, 0.05);
+      background: rgba(255, 255, 255, 0.7);
       padding: 20px;
-      border-left: 5px solid #00bcd4;
+      border-left: 5px solid #29b6f6;
       margin-bottom: 20px;
       border-radius: 8px;
       transition: 0.3s ease-in-out;
     }
     .step:hover {
-      transform: scale(1.01);
-      background-color: rgba(255, 255, 255, 0.1);
+      transform: scale(1.02);
+      background-color: rgba(255, 255, 255, 0.9);
     }
     .step h2 {
       margin-top: 0;
@@ -64,8 +65,8 @@
     footer {
       text-align: center;
       padding: 20px;
-      background-color: #02141f;
-      color: #ccc;
+      background-color: #01579b;
+      color: white;
     }
     @keyframes fadeInUp {
       from { opacity: 0; transform: translateY(20px); }
@@ -89,52 +90,38 @@
 
   <div class="container">
     <div class="step">
-      <h2 data-tr="1">🔵 ZelixOS ISO'yu İndirme / Downloading the ISO</h2>
-      <p data-tr="1">
-        Resmî <a href="https://yasirpeker1212.github.io/zelixos/" style="color:#4fc3f7;">web sitemizi</a> ziyaret edin ve "Download ISO" butonuna tıklayarak en son sürümü indirin. ISO dosyasını bilgisayarınızda kolayca bulunabilir bir yere kaydedin.
-      </p>
+      <h2 data-key="1">🔵 ZelixOS ISO'yu İndirme / Downloading the ISO</h2>
+      <p data-key="1_desc"></p>
     </div>
 
     <div class="step">
-      <h2 data-tr="2">💿 USB Hazırlığı / Preparing USB Media</h2>
-      <p data-tr="2">
-        ISO dosyasını yazmak için Rufus (Windows) veya Balena Etcher (Linux/Mac/Windows) gibi bir araç kullanın. En az 4 GB'lık bir USB belleğe ihtiyacınız olacak. "ISO Mode" veya "DD Mode" seçeneklerinde ISO Mode'u tercih edin.
-      </p>
+      <h2 data-key="2">💿 USB Hazırlığı / Preparing USB Media</h2>
+      <p data-key="2_desc"></p>
     </div>
 
     <div class="step">
-      <h2 data-tr="3">🔧 BIOS Ayarları / BIOS Configuration</h2>
-      <p data-tr="3">
-        Bilgisayarınızı yeniden başlatın ve BIOS/UEFI'ye girin (genellikle F2, DEL veya ESC tuşuyla). Boot Priority ayarlarını açın ve USB cihazını ilk sıraya alın. Secure Boot'u devre dışı bırakmanız gerekebilir.
-      </p>
+      <h2 data-key="3">🔧 BIOS Ayarları / BIOS Configuration</h2>
+      <p data-key="3_desc"></p>
     </div>
 
     <div class="step">
-      <h2 data-tr="4">🚀 Canlı Ortamla Başlat / Boot into Live Environment</h2>
-      <p data-tr="4">
-        USB'yi takın ve bilgisayarınızı yeniden başlatın. ZelixOS canlı ortamı otomatik olarak açılacaktır. Bu ortamdan sistemi test edebilir veya kuruluma geçebilirsiniz.
-      </p>
+      <h2 data-key="4">🚀 Canlı Ortamla Başlat / Boot into Live Environment</h2>
+      <p data-key="4_desc"></p>
     </div>
 
     <div class="step">
-      <h2 data-tr="5">🛠 Calamares ile Kurulum / Install via Calamares</h2>
-      <p data-tr="5">
-        Masaüstünde bulunan "Install ZelixOS" simgesine tıklayın. Adımları takip ederek dil, bölge, disk bölümlendirme ve kullanıcı bilgilerinizi girin. Kurulum tamamlandığında sistemi yeniden başlatın.
-      </p>
+      <h2 data-key="5">🛠 Calamares ile Kurulum / Install via Calamares</h2>
+      <p data-key="5_desc"></p>
     </div>
 
     <div class="step">
-      <h2 data-tr="6">✅ İlk Açılış ve Özelleştirme / First Boot & Customization</h2>
-      <p data-tr="6">
-        İlk açılışta "Zelix Welcome" uygulaması sizi karşılayacak. Buradan tema, wallpaper, uygulama yükleme ve sistem ayarlarını kolayca yapabilirsiniz. Daha fazla uygulama için "Zelix Essentials" uygulamasını kullanın.
-      </p>
+      <h2 data-key="6">✅ İlk Açılış ve Özelleştirme / First Boot & Customization</h2>
+      <p data-key="6_desc"></p>
     </div>
 
     <div class="step">
-      <h2 data-tr="7">📦 Güncelleme ve Yedekleme / Updates & Backup</h2>
-      <p data-tr="7">
-        Sisteminizi güncel tutmak için "Zelix Updater" uygulamasını çalıştırın. Verilerinizi korumak için "Zelix Backup" ile yedekleme alın. Otomatik yedekleme seçeneklerini ayarlamayı unutmayın.
-      </p>
+      <h2 data-key="7">📦 Güncelleme ve Yedekleme / Updates & Backup</h2>
+      <p data-key="7_desc"></p>
     </div>
   </div>
 
@@ -147,17 +134,24 @@
       en: {
         title: "ZelixOS Installation Guide",
         subtitle: "Everything you need to install and run ZelixOS seamlessly.",
-        1: "Visit our official <a href='https://yasirpeker1212.github.io/zelixos/' style='color:#4fc3f7;'>website</a> and click 'Download ISO' to get the latest release. Save it somewhere easily accessible.",
-        2: "Use tools like Rufus (Windows) or Balena Etcher (Linux/Mac/Windows) to write the ISO. You’ll need a USB with at least 4 GB. Choose 'ISO Mode' if prompted.",
-        3: "Reboot and enter your BIOS/UEFI (usually via F2, DEL, or ESC). Set USB as the first boot device and disable Secure Boot if necessary.",
-        4: "Insert the USB and reboot. ZelixOS live environment will boot automatically, allowing you to test or install the OS.",
-        5: "Click 'Install ZelixOS' on the desktop. Follow the steps: language, region, disk setup, user info. Restart once installation finishes.",
-        6: "On first boot, Zelix Welcome will greet you. Customize theme, wallpaper, and apps easily. For more apps, use Zelix Essentials.",
-        7: "To keep system updated, run Zelix Updater. Use Zelix Backup to secure your data. Don’t forget to configure automatic backups."
+        1_desc: "Visit our official <a href='https://yasirpeker1212.github.io/zelixos/' style='color:#0277bd;'>website</a> and click 'Download ISO' to get the latest release. Save it somewhere easily accessible.",
+        2_desc: "Use tools like Rufus (Windows) or Balena Etcher (Linux/Mac/Windows) to write the ISO. You'll need a USB with at least 4 GB. Choose 'ISO Mode' if prompted.",
+        3_desc: "Reboot and enter your BIOS/UEFI (usually via F2, DEL, or ESC). Set USB as the first boot device and disable Secure Boot if necessary.",
+        4_desc: "Insert the USB and reboot. ZelixOS live environment will boot automatically, allowing you to test or install the OS.",
+        5_desc: "Click 'Install ZelixOS' on the desktop. Follow the steps: language, region, disk setup, user info. Restart once installation finishes.",
+        6_desc: "On first boot, Zelix Welcome will greet you. Customize theme, wallpaper, and apps easily. For more apps, use Zelix Essentials.",
+        7_desc: "To keep system updated, run Zelix Updater. Use Zelix Backup to secure your data. Don't forget to configure automatic backups."
       },
       tr: {
         title: "ZelixOS Kurulum Rehberi",
-        subtitle: "ZelixOS'u sorunsuz şekilde kurmak ve çalıştırmak için ihtiyacınız olan her şey."
+        subtitle: "ZelixOS'u sorunsuz şekilde kurmak ve çalıştırmak için ihtiyacınız olan her şey.",
+        1_desc: "Resmî <a href='https://yasirpeker1212.github.io/zelixos/' style='color:#0277bd;'>web sitemizi</a> ziyaret edin ve 'ISO İndir' düğmesine tıklayarak en son sürümü indirin.",
+        2_desc: "ISO dosyasını Rufus (Windows) veya Balena Etcher (Linux/Mac/Windows) ile USB'ye yazdırın. En az 4 GB'lık USB kullanın.",
+        3_desc: "Bilgisayarınızı yeniden başlatın ve BIOS/UEFI menüsünden USB'yi birinci önyükleme cihazı olarak ayarlayın.",
+        4_desc: "USB'yi takın, sistemi yeniden başlatın ve ZelixOS canlı ortamına girin.",
+        5_desc: "Masaüstündeki 'ZelixOS Kurulum' simgesine tıklayın ve adımları takip ederek kurulumu tamamlayın.",
+        6_desc: "İlk açılışta 'Zelix Welcome' uygulamasını kullanarak temayı, duvar kağıdını ve uygulamaları kişiselleştirin.",
+        7_desc: "'Zelix Updater' ile sistemi güncel tutun ve 'Zelix Backup' ile düzenli yedekleme yapın."
       }
     };
 
@@ -165,11 +159,13 @@
       document.getElementById("title").textContent = translations[lang].title;
       document.getElementById("subtitle").textContent = translations[lang].subtitle;
 
-      document.querySelectorAll("[data-tr]").forEach(el => {
-        const key = el.getAttribute("data-tr");
+      document.querySelectorAll("[data-key]").forEach(el => {
+        const key = el.getAttribute("data-key");
         el.innerHTML = translations[lang][key];
       });
     }
+
+    setLanguage('en');
   </script>
 </body>
 </html>
