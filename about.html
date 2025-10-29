@@ -33,7 +33,6 @@
       --muted-hover:rgba(99,102,241,.06);
       --muted-strong:rgba(99,102,241,.12);
     }
-    /* Prefer light */
     @media (prefers-color-scheme: light){
       :root{
         --bg:#ffffff; --bg-elev:#ffffff; --bg-muted:#f7f8fb;
@@ -45,7 +44,6 @@
         --muted-strong:rgba(99,102,241,.1);
       }
     }
-    /* Force by data-theme */
     [data-theme="light"]{
       --bg:#ffffff; --bg-elev:#ffffff; --bg-muted:#f7f8fb;
       --text:#0b1020; --text-dim:#5b6478;
@@ -98,48 +96,44 @@
     /* ------- Sections ------- */
     section{ padding:5rem 1.25rem; max-width:1400px; margin:0 auto; }
     .hero{
-      padding-top:7rem; padding-bottom:3rem; text-align:center;
+      padding-top:7rem; padding-bottom:2.5rem; text-align:center;
       background:
         radial-gradient(70% 50% at 50% 15%, color-mix(in oklab, var(--primary) 14%, transparent), transparent 60%),
         var(--bg);
     }
     .hero h1{
       font-size: clamp(2.1rem, 6vw, 3.6rem);
-      font-weight: 900; line-height:1.1; margin-bottom: .7rem;
+      font-weight: 900; line-height:1.1; margin-bottom: .6rem;
       background: linear-gradient(135deg, var(--primary), var(--accent));
       -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
     }
-    .hero p{ color:var(--text-dim); max-width:780px; margin:0 auto; font-size:1.05rem; }
+    .hero p{ color:var(--text-dim); max-width:820px; margin:0 auto; font-size:1.05rem; }
 
-    .subhead{ text-align:center; font-size: clamp(1.6rem, 3.5vw, 2rem); font-weight:800; margin-bottom:1rem; }
-    .lead{ text-align:center; color:var(--text-dim); max-width:820px; margin:.3rem auto 2rem; }
+    .subhead{ text-align:center; font-size: clamp(1.6rem, 3.5vw, 2rem); font-weight:800; margin-bottom:.6rem; }
+    .lead{ text-align:center; color:var(--text-dim); max-width:820px; margin:.3rem auto 1.7rem; }
 
-    /* ------- Team Grid ------- */
-    .team-grid{
-      display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap:1.25rem; margin-top:1rem;
-    }
+    /* ------- Cards & Grid ------- */
+    .grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:1rem; }
     .card{
       background:var(--bg-elev); border:1px solid var(--border); border-radius:16px;
       padding:1.4rem; transition:transform .15s, border-color .2s, box-shadow .2s;
       box-shadow: 0 10px 28px var(--shadow);
     }
     .card:hover{ transform: translateY(-4px); border-color:var(--border-strong); }
-    .avatar{
-      width:96px; height:96px; border-radius:50%; margin:0 auto .9rem;
-      display:grid; place-items:center; font-size:2rem;
-      background:linear-gradient(135deg, var(--primary), var(--accent)); color:#fff;
+
+    /* ------- Team ------- */
+    .team-grid{
+      display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap:1.25rem; margin-top:1rem;
     }
+    .avatar{
+      width:108px; height:108px; border-radius:50%; margin:0 auto .9rem;
+      overflow:hidden; border:2px solid var(--border-strong); box-shadow:0 6px 18px var(--shadow);
+    }
+    .avatar img{ width:100%; height:100%; object-fit:cover; display:block; }
     .card h3{ text-align:center; font-size:1.15rem; margin-bottom:.25rem; }
     .role{ text-align:center; color:var(--text-dim); font-size:.95rem; margin-bottom:.6rem; }
     .meta{ text-align:center; color:var(--text-dim); font-size:.9rem; }
-
-    /* ------- Values / Mission ------- */
-    .values{ display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:1rem; margin-top:1rem; }
-    .pill{
-      display:inline-block; border:1px solid var(--border); padding:.18rem .55rem;
-      border-radius:999px; font-size:.85rem; color:var(--text-dim); margin-right:.3rem;
-    }
 
     /* ------- Timeline ------- */
     .timeline{ max-width:920px; margin:1rem auto 0; }
@@ -187,99 +181,68 @@
 
   <!-- Hero -->
   <header class="hero">
-    <h1>Meet the People Behind ZelixOS</h1>
+    <h1>About ZelixOS</h1>
     <p>
-      We’re a small, focused team building a fast, friendly, elegant Linux experience.
-      Open-source spirit, thoughtful design, and pragmatic engineering guide everything we do.
+      A fast, friendly, elegant Linux experience — built with care and precision.
     </p>
   </header>
 
-  <!-- Team -->
-  <section aria-labelledby="team-title">
-    <h2 id="team-title" class="subhead">Core Team</h2>
-    <p class="lead">Passionate humans crafting delightful details.</p>
-
-    <div class="team-grid" role="list">
-      <article class="card" role="listitem">
-        <div class="avatar">👨‍💻</div>
-        <h3>Muhammed Yasir Peker</h3>
-        <div class="role">Lead Developer & Project Founder</div>
-        <p class="meta">Kernel, tooling, installers, performance.</p>
-      </article>
-
-      <article class="card" role="listitem">
-        <div class="avatar">🎨</div>
-        <h3>Zeynep Peker</h3>
-        <div class="role">UI/UX & Brand</div>
-        <p class="meta">Visual system, accessibility, docs style.</p>
-      </article>
-
-      <article class="card" role="listitem">
-        <div class="avatar">🧠</div>
-        <h3>Furkan Enes Peker</h3>
-        <div class="role">QA & Docs</div>
-        <p class="meta">Testing scenarios, tutorials, community notes.</p>
-      </article>
-
-      <article class="card" role="listitem">
-        <div class="avatar">🔧</div>
-        <h3>CyberPlus Studios</h3>
-        <div class="role">Contributors</div>
-        <p class="meta">Patches, translations, feedback loops.</p>
-      </article>
-    </div>
-  </section>
-
-  <!-- Mission & Values -->
-  <section aria-labelledby="mission-title">
-    <h2 id="mission-title" class="subhead">Mission & Values</h2>
+  <!-- NEW: About the OS (before Meet the People) -->
+  <section aria-labelledby="about-os-title">
+    <h2 id="about-os-title" class="subhead">About the OS</h2>
     <p class="lead">
-      ZelixOS merges performance, design, and approachability. We keep things simple, stable, and polished—so you can focus on creating.
+      ZelixOS blends performance, clean design, and approachability. It favors reliable defaults,
+      a polished onboarding, and tools that respect your time and privacy.
     </p>
 
-    <div class="values">
+    <div class="grid" style="margin-top:.5rem">
       <div class="card">
-        <h3 style="margin-bottom:.4rem;">What We Believe</h3>
-        <p style="color:var(--text-dim)">
-          Open-source is about people. Tools should be fast, beautiful, and respectful of your time and privacy.
-        </p>
-        <div style="margin-top:.7rem">
-          <span class="pill">Performance</span>
-          <span class="pill">Simplicity</span>
-          <span class="pill">Accessibility</span>
-          <span class="pill">Community</span>
-        </div>
+        <h3 style="margin-bottom:.35rem;">Design & UX</h3>
+        <p style="color:var(--text-dim)">Thoughtful visuals, consistent spacing, and accessible contrast for a calm, focused desktop.</p>
       </div>
-
       <div class="card">
-        <h3 style="margin-bottom:.4rem;">How We Build</h3>
-        <p style="color:var(--text-dim)">
-          We ship small, steady improvements. We prefer clear UX, reliable defaults, and thoughtful documentation.
-        </p>
-        <div style="margin-top:.7rem">
-          <span class="pill">Iterate</span>
-          <span class="pill">Measure</span>
-          <span class="pill">Polish</span>
-          <span class="pill">Document</span>
-        </div>
+        <h3 style="margin-bottom:.35rem;">Performance</h3>
+        <p style="color:var(--text-dim)">Snappy defaults and tuned services deliver a responsive feel across a wide range of hardware.</p>
       </div>
-
       <div class="card">
-        <h3 style="margin-bottom:.4rem;">Where We're Going</h3>
-        <p style="color:var(--text-dim)">
-          A cohesive desktop with smarter defaults, better onboarding, and first-class developer tooling.
-        </p>
-        <div style="margin-top:.7rem">
-          <span class="pill">Onboarding</span>
-          <span class="pill">Dev Tools</span>
-          <span class="pill">Design System</span>
-          <span class="pill">Localization</span>
-        </div>
+        <h3 style="margin-bottom:.35rem;">Developer-Friendly</h3>
+        <p style="color:var(--text-dim)">Ready-to-code setup with sensible tools, clear docs, and minimal friction.</p>
       </div>
     </div>
   </section>
 
-  <!-- Timeline -->
+  <!-- People -->
+  <section aria-labelledby="team-title">
+    <h2 id="team-title" class="subhead">Meet the People Behind ZelixOS</h2>
+    <p class="lead">
+      Everything you see here was built by <strong>Muhammed Yasir Peker</strong>.  
+      Special thanks to <strong>Mustafa Peker</strong> for <em>Financial Support (Maddi Destek)</em>.
+    </p>
+
+    <div class="team-grid" role="list">
+      <!-- Yasir -->
+      <article class="card" role="listitem">
+        <div class="avatar">
+          <img src="images/yasir.jpg" alt="Portrait of Muhammed Yasir Peker" loading="lazy">
+        </div>
+        <h3>Muhammed Yasir Peker</h3>
+        <div class="role">Founder • Lead Developer • Everything</div>
+        <p class="meta">Design system, installer, defaults, tooling, docs — tamamı Yasir tarafından yapıldı.</p>
+      </article>
+
+      <!-- Mustafa -->
+      <article class="card" role="listitem">
+        <div class="avatar">
+          <img src="images/mustafa.jpg" alt="Portrait of Mustafa Peker" loading="lazy">
+        </div>
+        <h3>Mustafa Peker</h3>
+        <div class="role">Financial Support • Maddi Destek</div>
+        <p class="meta">Projeye sürdürülebilirlik ve ivme kazandıran maddi destek.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- Timeline (opsiyonel örnek) -->
   <section aria-labelledby="timeline-title">
     <h2 id="timeline-title" class="subhead">ZelixOS Story</h2>
     <p class="lead">A few milestones on the road so far.</p>
@@ -319,12 +282,12 @@
   <footer>
     <p>&copy; 2025 ZelixOS by CyberPlus Studios. All rights reserved.</p>
     <p style="margin-top:.5rem">
-      Want to help? Join the community and shape the future of ZelixOS.
+      Want to help? Get in touch and shape the future of ZelixOS.
     </p>
   </footer>
 
   <script>
-    /* Smooth scroll for internal anchors (kept minimal here) */
+    /* Smooth scroll for internal anchors */
     document.querySelectorAll('a[href^="#"]').forEach(a=>{
       a.addEventListener('click',e=>{
         const id=a.getAttribute('href'); const el=document.querySelector(id);
@@ -332,19 +295,15 @@
       });
     });
 
-    /* Theme toggle: auto -> light -> dark (saved to localStorage) */
+    /* Theme toggle: auto -> light -> dark (persisted) */
     (function(){
       const KEY='zelixos-theme';
       const root=document.documentElement;
       const btn=document.getElementById('themeToggle');
 
-      function label(mode){
-        return mode==='light'?'☀️ Light' : mode==='dark'?'🌙 Dark' : '🌗 Theme';
-      }
-      function apply(mode){
-        root.setAttribute('data-theme', mode);
-        btn.textContent = label(mode);
-      }
+      function label(mode){ return mode==='light'?'☀️ Light' : mode==='dark'?'🌙 Dark' : '🌗 Theme'; }
+      function apply(mode){ root.setAttribute('data-theme', mode); btn.textContent = label(mode); }
+
       const saved = localStorage.getItem(KEY) || 'auto';
       apply(saved);
 
