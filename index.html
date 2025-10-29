@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="icons/favicon.ico">
-    <title>ZelixOS - Vision of the future starts here</title>
+    <title>ZelixOS - Vision of the Future Starts Here</title>
     <style>
         * {
             margin: 0;
@@ -13,149 +12,75 @@
         }
 
         :root {
-            --primary-blue: #0066CC;
-            --light-blue: #4A90E2;
-            --dark-blue: #003D7A;
-            --accent-blue: #00A8FF;
-            --bg-color: #FAFBFC;
-            --text-primary: #2C3E50;
-            --text-secondary: #6C7B7F;
-            --white: #FFFFFF;
-            --light-gray: #F8F9FA;
-            --border-color: #E1E8ED;
-            --shadow: 0 4px 20px rgba(0, 102, 204, 0.15);
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --accent: #06b6d4;
+            --bg-dark: #0a0a0f;
+            --bg-darker: #050508;
+            --text: #e5e7eb;
+            --text-dim: #9ca3af;
         }
-        .about-section {
-          padding: 100px 20px;
-          background-color: #f4f8fc;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          flex-wrap: wrap;
-        }
-        
-        .about-container {
-          display: flex;
-          max-width: 1200px;
-          flex-wrap: wrap;
-          align-items: center;
-          justify-content: center;
-          gap: 60px;
-        }
-        
-        .about-logo img {
-          width: 280px;
-          height: auto;
-          border-radius: 12px;
-        }
-        
-        .about-text {
-          max-width: 620px;
-        }
-        
-        .about-text h2 {
-          font-size: 2.6em;
-          color: #0a74da;
-          margin-bottom: 20px;
-        }
-        
-        .about-text p {
-          font-size: 1.15em;
-          color: #222;
-          line-height: 1.8;
-        }
-
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text);
             line-height: 1.6;
-            color: var(--text-primary);
-            background-color: var(--bg-color);
+            overflow-x: hidden;
         }
 
-        /* Navigation */
-        .navbar {
-            background: var(--white);
-            backdrop-filter: blur(10px);
-            box-shadow: var(--shadow);
+        .nav {
             position: fixed;
             top: 0;
             width: 100%;
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: blur(10px);
             z-index: 1000;
-            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(99, 102, 241, 0.1);
         }
 
-        .nav-container {
-            max-width: 1200px;
+        .nav-content {
+            max-width: 1400px;
             margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
             padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
             font-size: 1.5rem;
             font-weight: 700;
-            color: var(--primary-blue);
-            text-decoration: none;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        .logo img {
-            width: 40px;
-            height: 40px;
-            border-radius: 8px;
-        }
-
-        .nav-menu {
+        .nav-links {
             display: flex;
-            list-style: none;
             gap: 2rem;
-            align-items: center;
+            list-style: none;
         }
 
-        .nav-menu a {
+        .nav-links a {
+            color: var(--text);
             text-decoration: none;
-            color: var(--text-primary);
+            transition: color 0.3s;
             font-weight: 500;
-            transition: all 0.3s ease;
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
         }
 
-        .nav-menu a:hover {
-            color: var(--primary-blue);
-            background-color: rgba(0, 102, 204, 0.1);
+        .nav-links a:hover {
+            color: var(--primary);
         }
 
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            background: none;
-            border: none;
-            padding: 0.5rem;
-        }
-
-        .hamburger span {
-            width: 25px;
-            height: 3px;
-            background: var(--primary-blue);
-            margin: 3px 0;
-            border-radius: 3px;
-            transition: 0.3s;
-        }
-
-        /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--light-blue) 100%);
-            color: var(--white);
-            padding: 8rem 2rem 6rem;
-            margin-top: 80px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
+            padding: 2rem;
             position: relative;
             overflow: hidden;
         }
@@ -163,66 +88,87 @@
         .hero::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="rgba(255,255,255,0.05)" points="0,0 1000,300 1000,1000 0,700"/></svg>');
-            pointer-events: none;
+            width: 150%;
+            height: 150%;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
         }
 
         .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
             position: relative;
-            z-index: 2;
+            z-index: 1;
+            max-width: 900px;
         }
 
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
             font-weight: 800;
-            margin-bottom: 1rem;
-            background: linear-gradient(45deg, #FFFFFF, rgba(255,255,255,0.8));
-            background-clip: text;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        .hero .tagline {
-            font-size: 1.4rem;
-            margin-bottom: 2.5rem;
-            opacity: 0.95;
-            font-weight: 300;
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-dim);
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .download-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-            background: var(--white);
-            color: var(--primary-blue);
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            text-decoration: none;
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 8px;
             font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
         }
 
-        .download-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
-            background: var(--light-gray);
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
         }
 
-        /* Sections */
-        .section {
-            padding: 6rem 2rem;
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
         }
 
-        .container {
-            max-width: 1200px;
+        .btn-secondary {
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(99, 102, 241, 0.2);
+        }
+
+        section {
+            padding: 5rem 2rem;
+            max-width: 1400px;
             margin: 0 auto;
         }
 
@@ -230,21 +176,9 @@
             text-align: center;
             font-size: 2.5rem;
             font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
+            margin-bottom: 3rem;
         }
 
-        .section-subtitle {
-            text-align: center;
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            margin-bottom: 4rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* Features Grid */
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -253,589 +187,305 @@
         }
 
         .feature-card {
-            background: var(--white);
-            padding: 2.5rem;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(99, 102, 241, 0.2);
             border-radius: 16px;
-            box-shadow: var(--shadow);
-            transition: all 0.3s ease;
-            border: 1px solid var(--border-color);
+            padding: 2rem;
+            transition: all 0.3s;
         }
 
         .feature-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 8px 30px rgba(0, 102, 204, 0.2);
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 40px rgba(99, 102, 241, 0.2);
         }
 
         .feature-icon {
             width: 60px;
             height: 60px;
-            background: linear-gradient(135deg, var(--primary-blue), var(--light-blue));
+            background: linear-gradient(135deg, var(--primary), var(--accent));
             border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 1.5rem;
             margin-bottom: 1.5rem;
         }
 
         .feature-card h3 {
-            font-size: 1.3rem;
-            font-weight: 600;
+            font-size: 1.5rem;
             margin-bottom: 1rem;
-            color: var(--text-primary);
         }
 
         .feature-card p {
-            color: var(--text-secondary);
+            color: var(--text-dim);
             line-height: 1.7;
         }
 
-        /* Screenshots */
-        .screenshots-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 3rem;
+        .screenshot-section {
+            background: var(--bg-darker);
+            padding: 5rem 2rem;
+            margin: 3rem 0;
         }
 
-        .screenshot {
-            border-radius: 12px;
+        .screenshot-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            border-radius: 16px;
             overflow: hidden;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: var(--shadow);
-            padding-bottom: 5px;
-        }
-        .screenshot-caption {
-            text-align: center;
-            margin-top: 10px;
-            font-weight: 500;
-            color: var(--text-dark);
-            font-size: 14px;
-        }
-        .screenshot:hover {
-            transform: scale(1.05);
-            box-shadow: 0 12px 40px rgba(0, 102, 204, 0.25);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(99, 102, 241, 0.3);
         }
 
-        .screenshot img {
+        .screenshot-placeholder {
             width: 100%;
-            height: 200px;
-            object-fit: cover;
-            background: linear-gradient(45deg, var(--light-blue), var(--primary-blue));
+            aspect-ratio: 16/9;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(6, 182, 212, 0.1));
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--white);
-            font-weight: 500;
+            font-size: 1.5rem;
+            color: var(--text-dim);
         }
 
-        /* System Requirements */
-        .requirements-table {
-            background: var(--white);
+        .specs-table {
+            max-width: 900px;
+            margin: 3rem auto;
+            background: rgba(255, 255, 255, 0.02);
             border-radius: 16px;
             overflow: hidden;
-            box-shadow: var(--shadow);
-            margin-top: 3rem;
+            border: 1px solid rgba(99, 102, 241, 0.2);
         }
 
-        .requirements-table table {
+        .specs-table table {
             width: 100%;
             border-collapse: collapse;
         }
 
-        .requirements-table th,
-        .requirements-table td {
+        .specs-table th,
+        .specs-table td {
             padding: 1.5rem;
             text-align: left;
-            border-bottom: 1px solid var(--border-color);
+            border-bottom: 1px solid rgba(99, 102, 241, 0.1);
         }
 
-        .requirements-table th {
-            background: var(--primary-blue);
-            color: var(--white);
+        .specs-table th {
+            background: rgba(99, 102, 241, 0.1);
             font-weight: 600;
+            color: var(--primary);
         }
 
-        .requirements-table tr:hover {
-            background: var(--light-gray);
+        .specs-table tr:last-child td {
+            border-bottom: none;
         }
 
-        /* FAQ */
-        .faq-item {
-            background: var(--white);
-            border-radius: 12px;
-            margin-bottom: 1rem;
-            box-shadow: var(--shadow);
-            overflow: hidden;
+        .specs-table tr:hover {
+            background: rgba(99, 102, 241, 0.05);
         }
 
-        .faq-question {
-            background: none;
-            border: none;
-            width: 100%;
-            padding: 1.5rem 2rem;
-            text-align: left;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            color: var(--text-primary);
-            transition: all 0.3s ease;
-        }
-
-        .faq-question:hover {
-            background: var(--light-gray);
-        }
-
-        .faq-answer {
-            padding: 0 2rem 1.5rem;
-            color: var(--text-secondary);
-            line-height: 1.7;
-            display: none;
-        }
-
-        .faq-item.active .faq-answer {
-            display: block;
-        }
-
-        .faq-item.active .faq-question {
-            background: var(--light-gray);
-        }
-
-        /* Contact */
-        .contact-info {
+        footer {
+            background: var(--bg-darker);
+            padding: 3rem 2rem;
             text-align: center;
-            margin-top: 3rem;
+            border-top: 1px solid rgba(99, 102, 241, 0.1);
         }
 
-        .contact-links {
+        footer p {
+            color: var(--text-dim);
+        }
+
+        .footer-links {
             display: flex;
             justify-content: center;
             gap: 2rem;
+            margin-top: 1.5rem;
             flex-wrap: wrap;
         }
 
-        .contact-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: var(--primary-blue);
-            color: var(--white);
-            padding: 1rem 2rem;
-            border-radius: 50px;
+        .footer-links a {
+            color: var(--text-dim);
             text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
+            transition: color 0.3s;
         }
 
-        .contact-link:hover {
-            background: var(--dark-blue);
-            transform: translateY(-2px);
+        .footer-links a:hover {
+            color: var(--primary);
         }
 
-        /* Footer */
-        .footer {
-            background: var(--text-primary);
-            color: var(--white);
-            text-align: center;
-            padding: 3rem 2rem;
-        }
-
-        /* Mobile Responsive */
         @media (max-width: 768px) {
-            .nav-menu {
-                position: fixed;
-                left: -100%;
-                top: 80px;
-                flex-direction: column;
-                background: var(--white);
-                width: 100%;
-                text-align: center;
-                transition: 0.3s;
-                box-shadow: var(--shadow);
-                padding: 2rem 0;
-                gap: 1rem;
-            }
-
-            .nav-menu.active {
-                left: 0;
-            }
-
-            .hamburger {
-                display: flex;
-            }
-
-            .hamburger.active span:nth-child(2) {
-                opacity: 0;
-            }
-
-            .hamburger.active span:nth-child(1) {
-                transform: translateY(9px) rotate(45deg);
-            }
-
-            .hamburger.active span:nth-child(3) {
-                transform: translateY(-9px) rotate(-45deg);
-            }
-
-            .hero {
-                padding: 6rem 1rem 4rem;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .section {
-                padding: 4rem 1rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
+            .nav-links {
+                display: none;
             }
 
             .features-grid {
                 grid-template-columns: 1fr;
             }
 
-            .contact-links {
-                flex-direction: column;
-                align-items: center;
+            section {
+                padding: 3rem 1rem;
+            }
+        }
+
+        .animate-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="#" class="logo">
-                <div style="width: 40px; height: 40px; background: linear-gradient(135deg, var(--primary-blue), var(--light-blue)); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">Z</div>
-                ZelixOS
-            </a>
-            <ul class="nav-menu">
-                <li><a href="#home">Anasayfa</a></li>
-                <li><a href="#about">Hakkında</a></li>
-                <li><a href="#features">Özellikler</a></li>
-                <li><a href="#screenshots">Ekran Görüntüleri</a></li>
-                <li><a href="#download">İndir</a></li>
-                <li><a href="#faq">SSS</a></li>
-                <li><a href="#contact">İletişim</a></li>
+    <nav class="nav">
+        <div class="nav-content">
+            <div class="logo">ZelixOS</div>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#screenshots">Screenshots</a></li>
+                <li><a href="#specs">System Requirements</a></li>
+                <li><a href="#download">Download</a></li>
             </ul>
-            <button class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
+    <section class="hero">
         <div class="hero-content">
-            <h1>ZelixOS</h1>
-            <p class="tagline">Vision of the future starts here.</p>
-    
-            <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
-                <!-- Download ISO Button -->
-                <a href="https://drive.usercontent.google.com/download?id=16eX8QS5Q9yxZeOL-ocVq9pxJ7IPJSkFu&export=download&authuser=0&confirm=t&uuid=baf0fe15-bfe4-4965-bafd-4e01dcda1359&at=AN8xHopMietvZWhDJbnL47wXM2i4%3A1753260221596"
-                   class="download-btn"
-                   target="_blank">
-                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
-                    </svg>
-                    Download ISO
-                </a>
-    
-                <!-- Installation Guide Button -->
-                <a href="guide.html" class="download-btn">
-                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M3 4v16h18V4H3zm16 14H5V6h14v12zM7 8h10v2H7V8zm0 4h6v2H7v-2z"/>
-                    </svg>
-                    Installation Guide
-                </a>
+            <h1>
+                Vision of the <span class="gradient-text">Future</span><br>Starts Here
+            </h1>
+            <p>
+                ZelixOS is a modern, user-friendly Linux distribution powered by KDE technology. 
+                Designed for newcomers to Linux and those who want to work efficiently with a clean interface.
+            </p>
+            <div class="cta-buttons">
+                <a href="#download" class="btn btn-primary">Download Now</a>
+                <a href="#features" class="btn btn-secondary">Learn More</a>
             </div>
         </div>
     </section>
 
-    
-    <!-- About Section -->
-    <section id="about" class="about-section">
-      <div class="about-container">
-        <div class="about-logo">
-          <img src="icons/zelixos.png" alt="ZelixOS Logosu">
-        </div>
-        <div class="about-text">
-          <h2>ZelixOS Hakkında</h2>
-          <p>
-            ZelixOS, Modern KDE Teknolojisiyle Güçlendirilmiş, kullanıcı dostu, modern bir Linux dağıtımıdır. Linux dünyasına yeni adım atanlar ve sade bir arayüzle verimli çalışmak isteyenler için özel olarak tasarlanmıştır.
-            <br><br>
-            Sistem, başlangıçta sizi karşılayan özel bir "Hoş Geldiniz" uygulaması, temel yazılımların tek tıkla kurulabildiği <strong>Zelix Essentials</strong>, sistem temizliği için <strong>Zelix Cleaner</strong> ve verilerinizi kolayca yedekleyip geri yükleyebileceğiniz <strong>Zelix Backup</strong> araçlarıyla birlikte gelir.
-            <br><br>
-            Hafif, kararlı ve estetik yapısıyla ZelixOS; sadelik, hız ve işlevsellik arayanlar için yeni bir alternatif sunar. Topluluk destekli bir proje olan ZelixOS, CyberPlus Studios tarafından geliştirilmekte olup, özgür yazılım felsefesini benimsemektedir.
-            <br><br>
-            Hedefimiz: herkesin kullanabileceği kolay, modern ve özelleştirilebilir bir Linux deneyimi sunmak.
-          </p>
-        </div>
-      </div>
-    </section>
+    <section id="features">
+        <h2 class="section-title">Powerful Features</h2>
+        <div class="features-grid">
+            <div class="feature-card animate-in">
+                <div class="feature-icon">🖥️</div>
+                <h3>Modern Desktop</h3>
+                <p>Experience a powerful and efficient workflow with customizable KDE Plasma and XFCE desktop environments.</p>
+            </div>
 
+            <div class="feature-card animate-in" style="animation-delay: 0.1s;">
+                <div class="feature-icon">📦</div>
+                <h3>Pre-configured Apps</h3>
+                <p>Get access to all the tools you need right after installation with our pre-configured application package.</p>
+            </div>
 
-    <!-- Features Section -->
-    <section id="features" class="section">
-        <div class="container">
-            <h2 class="section-title">Özellikler</h2>
-            <p class="section-subtitle">ZelixOS, kullanıcı dostu arayüzü ve güçlü özellikleri ile Linux deneyiminizi yeni bir seviyeye taşır</p>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg width="30" height="30" fill="white" viewBox="0 0 24 24">
-                            <path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/>
-                        </svg>
-                    </div>
-                    <h3>Güçlü Masaüstü</h3>
-                    <p>Modern ve özelleştirilebilir KDE Plasma ve XFCE masaüstü ortamı ile güçlü ve verimli bir çalışma deneyimi yaşayın.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg width="30" height="30" fill="white" viewBox="0 0 24 24">
-                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                        </svg>
-                    </div>
-                    <h3>Zelix Essentials ile Tek Tıkla Uygulamalar</h3>
-                    <p>Önceden yapılandırılmış uygulama paketi ile sistem kurulumundan hemen sonra ihtiyacınız olan tüm araçlara sahip olun.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg width="30" height="30" fill="white" viewBox="0 0 24 24">
-                            <path d="M12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm0-10c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4z"/>
-                        </svg>
-                    </div>
-                    <h3>Karanlık & Aydınlık Tema Desteği</h3>
-                    <p>Göz yorgunluğunu azaltan karanlık mod ve klasik aydınlık mod arasında kolayca geçiş yapın.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg width="30" height="30" fill="white" viewBox="0 0 24 24">
-                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z"/>
-                        </svg>
-                    </div>
-                    <h3>Zelix Backup ile Kolay Yedekleme</h3>
-                    <p>Verilerinizi güvenli tutmak için basit ve etkili yedekleme çözümü ile sistem ve kişisel dosyalarınızı koruyun.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg width="30" height="30" fill="white" viewBox="0 0 24 24">
-                            <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
-                        </svg>
-                    </div>
-                    <h3>Hızlı ve Hafif Yapı</h3>
-                    <p>Optimize edilmiş yapısı sayesinde düşük donanımlarda bile yüksek performans sunar. Hızlı açılış ve kararlı kullanım deneyimi yaşayın.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg width="30" height="30" fill="white" viewBox="0 0 24 24">
-                            <path d="M19 3H5c-1.1 0-2 .9-2 2v14l4-4h12c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/>
-                        </svg>
-                    </div>
-                    <h3>Geliştirici Dostu Araçlar</h3>
-                    <p>VS Code, Git, Python ve daha fazlasıyla önceden entegre edilmiş geliştirici araçları sayesinde yazılım geliştirme artık daha kolay.</p>
-                </div>
+            <div class="feature-card animate-in" style="animation-delay: 0.2s;">
+                <div class="feature-icon">🌙</div>
+                <h3>Dark Mode</h3>
+                <p>Easily switch between dark mode and classic light mode to reduce eye strain.</p>
+            </div>
+
+            <div class="feature-card animate-in" style="animation-delay: 0.3s;">
+                <div class="feature-icon">💾</div>
+                <h3>Zelix Backup</h3>
+                <p>Keep your data safe with our simple and effective backup solution for system and personal files.</p>
+            </div>
+
+            <div class="feature-card animate-in" style="animation-delay: 0.4s;">
+                <div class="feature-icon">⚡</div>
+                <h3>High Performance</h3>
+                <p>Optimized structure delivers high performance even on low-end hardware. Fast boot and stable experience.</p>
+            </div>
+
+            <div class="feature-card animate-in" style="animation-delay: 0.5s;">
+                <div class="feature-icon">👨‍💻</div>
+                <h3>Developer Ready</h3>
+                <p>Pre-integrated development tools including VS Code, Git, Python and more make software development easier.</p>
             </div>
         </div>
     </section>
 
-    <!-- Screenshots Section -->
-    <section id="screenshots" class="section" style="background: var(--light-gray);">
-        <div class="container">
-            <h2 class="section-title">Ekran Görüntüleri</h2>
-            <p class="section-subtitle">ZelixOS'un güzel ve kullanıcı dostu arayüzünü keşfedin</p>
-            <div class="screenshots-grid">
-                <div class="screenshot">
-                    <img src="screenshots/desktop-view.png" alt="ZelixOS Masaüstü Görünümü" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">
-                    <div class="screenshot-caption">Masaüstü Görünümü</div>
-                </div>
-                <div class="screenshot">
-                    <img src="screenshots/app-menu.png" alt="ZelixOS Uygulama Menüsü" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">
-                    <div class="screenshot-caption">Uygulama Menüsü</div>
-                </div>
-                <div class="screenshot">
-                    <img src="screenshots/dark-theme.png" alt="ZelixOS Karanlık Tema" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">
-                    <div class="screenshot-caption">Karanlık Tema</div>
-                </div>
-                <div class="screenshot">
-                    <img src="screenshots/zelix-tools.png" alt="ZelixOS Zelix Araçları" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">
-                    <div class="screenshot-caption">Zelix Araçları</div>
-                </div>
+    <section class="screenshot-section" id="screenshots">
+        <h2 class="section-title">Beautiful & User-Friendly Interface</h2>
+        <div class="screenshot-container">
+            <div class="screenshot-placeholder">
+                Desktop Preview
             </div>
         </div>
     </section>
 
-    <!-- System Requirements -->
-    <section id="download" class="section">
-        <div class="container">
-            <h2 class="section-title">Sistem Gereksinimleri</h2>
-            <p class="section-subtitle">ZelixOS'u sorunsuz çalıştırmak için gerekli sistem özellikleri</p>
-            <div class="requirements-table">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Bileşen</th>
-                            <th>Minimum</th>
-                            <th>Önerilen</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>İşlemci</strong></td>
-                            <td>64-bit dual-core 1.5 GHz</td>
-                            <td>64-bit quad-core 2.0 GHz+</td>
-                        </tr>
-                        <tr>
-                            <td><strong>RAM</strong></td>
-                            <td>2 GB</td>
-                            <td>4 GB veya daha fazla</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Depolama</strong></td>
-                            <td>15 GB boş alan</td>
-                            <td>25 GB+ SSD</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Grafik</strong></td>
-                            <td>Intel HD Graphics veya eşdeğeri</td>
-                            <td>Ayrık grafik kartı</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Ağ</strong></td>
-                            <td>İnternet bağlantısı (kurulum için)</td>
-                            <td>Broadband internet bağlantısı</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+    <section id="specs">
+        <h2 class="section-title">System Requirements</h2>
+        <p style="text-align: center; color: var(--text-dim); max-width: 700px; margin: 0 auto 2rem;">
+            Required system specifications to run ZelixOS smoothly
+        </p>
+        <div class="specs-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Component</th>
+                        <th>Minimum</th>
+                        <th>Recommended</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Processor</strong></td>
+                        <td>64-bit dual-core 1.5 GHz</td>
+                        <td>64-bit quad-core 2.0 GHz+</td>
+                    </tr>
+                    <tr>
+                        <td><strong>RAM</strong></td>
+                        <td>2 GB</td>
+                        <td>4 GB or more</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Storage</strong></td>
+                        <td>15 GB free space</td>
+                        <td>25 GB+ SSD</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Graphics</strong></td>
+                        <td>Intel HD Graphics or equivalent</td>
+                        <td>Dedicated graphics card</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Network</strong></td>
+                        <td>Internet connection (for installation)</td>
+                        <td>Broadband internet connection</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </section>
 
-    <!-- FAQ Section -->
-    <section id="faq" class="section" style="background: var(--light-gray);">
-        <div class="container">
-            <h2 class="section-title">Sık Sorulan Sorular</h2>
-            <p class="section-subtitle">ZelixOS hakkında en çok merak edilen sorular ve cevapları</p>
-            
-            <div class="faq-item">
-                <button class="faq-question">
-                    ZelixOS ücretsiz mi?
-                    <span>+</span>
-                </button>
-                <div class="faq-answer">
-                    Evet, ZelixOS tamamen ücretsiz ve açık kaynaklı bir Linux dağıtımıdır. İndirme, kullanma ve dağıtma konusunda hiçbir ücret yoktur.
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <button class="faq-question">
-                    Canlı modda çalışır mı?
-                    <span>+</span>
-                </button>
-                <div class="faq-answer">
-                    Evet, ZelixOS USB'den canlı mod olarak çalıştırılabilir. Bu sayede sistemi kurmadan önce test edebilirsiniz.
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <button class="faq-question">
-                    Hangi masaüstü ortamı kullanılıyor?
-                    <span>+</span>
-                </button>
-                <div class="faq-answer">
-                    ZelixOS, KDE Plasma masaüstü ortamını kullanır. Modern, hızlı ve son derece özelleştirilebilir bir deneyim sunar.
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <button class="faq-question">
-                    Windows uygulamalarını çalıştırabilir miyim?
-                    <span>+</span>
-                </button>
-                <div class="faq-answer">
-                    Wine ve PlayOnLinux gibi araçlarla birçok Windows uygulamasını çalıştırabilirsiniz. Zelix Essentials bu araçları içerir.
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <button class="faq-question">
-                    Teknik destek nasıl alabilirim?
-                    <span>+</span>
-                </button>
-                <div class="faq-answer">
-                    GitHub sayfamızdan issue açabilir, topluluk forumlarımızda soru sorabilir veya e-posta yoluyla bizimle iletişime geçebilirsiniz.
-                </div>
-            </div>
-        </div>
+    <section id="download" style="text-align: center; padding: 5rem 2rem;">
+        <h2 class="section-title">Ready to Experience ZelixOS?</h2>
+        <p style="color: var(--text-dim); margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+            Join the community and discover what makes ZelixOS special. Free, open-source, and community-supported.
+        </p>
+        <a href="https://yasirpeker1212.github.io/zelixos/" class="btn btn-primary" style="display: inline-block;">
+            Download ZelixOS
+        </a>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="section">
-        <div class="container">
-            <h2 class="section-title">İletişim</h2>
-            <p class="section-subtitle">Sorularınız için bizimle iletişime geçin</p>
-            <div class="contact-info">
-                <div class="contact-links">
-                    <a href="https://github.com/yasirpeker1212/zelixos" class="contact-link" target="_blank">
-                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                        </svg>
-                        GitHub
-                    </a>
-                </div>
-            </div>
+    <footer>
+        <p>&copy; 2025 ZelixOS by CyberPlus Studios. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="#">Documentation</a>
+            <a href="#">Community</a>
+            <a href="#">GitHub</a>
+            <a href="#">Support</a>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <p>&copy; 2025 CyberPlus Studios tarafından geliştirildi.</p>
     </footer>
 
     <script>
-        // Mobile menu toggle
-        const hamburger = document.querySelector('.hamburger');
-        const navMenu = document.querySelector('.nav-menu');
-
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navMenu.classList.toggle('active');
-        });
-
-        // Close menu when clicking on a link
-        document.querySelectorAll('.nav-menu a').forEach(n => n.addEventListener('click', () => {
-            hamburger.classList.remove('active');
-            navMenu.classList.remove('active');
-        }));
-
-        // FAQ toggle
-        document.querySelectorAll('.faq-question').forEach(button => {
-            button.addEventListener('click', () => {
-                const faqItem = button.parentElement;
-                const isActive = faqItem.classList.contains('active');
-                
-                // Close all FAQ items
-                document.querySelectorAll('.faq-item').forEach(item => {
-                    item.classList.remove('active');
-                    item.querySelector('.faq-question span').textContent = '+';
-                });
-                
-                // Open clicked item if it wasn't active
-                if (!isActive) {
-                    faqItem.classList.add('active');
-                    button.querySelector('span').textContent = '−';
-                }
-            });
-        });
-
-        // Smooth scrolling for navigation links
+        // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -849,109 +499,23 @@
             });
         });
 
-        // Navbar scroll effect
-        window.addEventListener('scroll', () => {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 50) {
-                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
-                navbar.style.backdropFilter = 'blur(10px)';
-            } else {
-                navbar.style.background = 'var(--white)';
-                navbar.style.backdropFilter = 'blur(10px)';
-            }
-        });
-
-        // Screenshot modal functionality (simple implementation)
-        document.querySelectorAll('.screenshot').forEach(screenshot => {
-            screenshot.addEventListener('click', () => {
-                // Create modal overlay
-                const modal = document.createElement('div');
-                modal.style.cssText = `
-                    position: fixed;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                    background: rgba(0, 0, 0, 0.9);
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    z-index: 10000;
-                    cursor: pointer;
-                `;
-                
-                const img = screenshot.querySelector('div').cloneNode(true);
-                img.style.cssText += `
-                    max-width: 90%;
-                    max-height: 90%;
-                    border-radius: 12px;
-                `;
-                
-                modal.appendChild(img);
-                document.body.appendChild(modal);
-                
-                // Close modal on click
-                modal.addEventListener('click', () => {
-                    document.body.removeChild(modal);
-                });
-            });
-        });
-
-        // Add loading animation for download button
-        const downloadBtn = document.querySelector('.download-btn');
-        downloadBtn.addEventListener('click', function(e) {
-            const originalText = this.innerHTML;
-            this.innerHTML = `
-                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" style="animation: spin 1s linear infinite;">
-                    <path d="M12 4V2A10 10 0 0 0 2 12h2a8 8 0 0 1 8-8z"/>
-                </svg>
-                Yükleniyor...
-            `;
-            
-            setTimeout(() => {
-                this.innerHTML = originalText;
-            }, 2000);
-        });
-
-        // Add CSS for spin animation
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes spin {
-                0% { transform: rotate(0deg); }
-                100% { transform: rotate(360deg); }
-            }
-        `;
-        document.head.appendChild(style);
-
         // Intersection Observer for animations
         const observerOptions = {
             threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+            rootMargin: '0px 0px -100px 0px'
         };
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+                    entry.target.style.animationPlayState = 'running';
                 }
             });
         }, observerOptions);
 
-        // Observe feature cards
-        document.querySelectorAll('.feature-card').forEach((card, index) => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(30px)';
-            card.style.transition = `all 0.6s ease ${index * 0.1}s`;
-            observer.observe(card);
-        });
-
-        // Observe screenshots
-        document.querySelectorAll('.screenshot').forEach((screenshot, index) => {
-            screenshot.style.opacity = '0';
-            screenshot.style.transform = 'translateY(30px)';
-            screenshot.style.transition = `all 0.6s ease ${index * 0.1}s`;
-            observer.observe(screenshot);
+        document.querySelectorAll('.animate-in').forEach(el => {
+            el.style.animationPlayState = 'paused';
+            observer.observe(el);
         });
     </script>
 </body>
