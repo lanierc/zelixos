@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://yasirpeker1212.github.io/zelixos/sitemap.xml
