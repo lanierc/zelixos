@@ -452,7 +452,7 @@ sudo sync
                 <p>Always start by updating your system to get the latest security patches and features:</p>
                 <div class="code-block">
                     <code>
-sudo pacman -Syu
+sudo apt upgrade
                     </code>
                 </div>
 
@@ -607,10 +607,10 @@ sudo pacman -Syu
                 <div class="code-block">
                     <code>
 # Full system update<br>
-sudo pacman -Syu<br><br>
+sudo apt full-upgrade <br><br>
 
 # Update package database only<br>
-sudo pacman -Sy
+sudo apt update
                     </code>
                 </div>
 
@@ -618,10 +618,10 @@ sudo pacman -Sy
                 <div class="code-block">
                     <code>
 # Install a package<br>
-sudo pacman -S package-name<br><br>
+sudo apt install package-name<br><br>
 
 # Search for a package<br>
-pacman -Ss search-term
+apt search package-name
                     </code>
                 </div>
 
