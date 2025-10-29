@@ -20,6 +20,7 @@
       overflow-x: hidden;
       background: var(--bg);
       color: var(--text);
+      font-size: 18px;
     }
 
     /* ---------- Theme Variables ---------- */
@@ -110,6 +111,7 @@
       background: linear-gradient(135deg, var(--primary), var(--accent));
       -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
       letter-spacing: 0.2px;
+      cursor: pointer;
     }
     .nav-right { display: flex; align-items: center; gap: 1rem; }
 
@@ -150,7 +152,7 @@
       -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
     }
     .hero p {
-      font-size: 1.1rem; color: var(--text-dim);
+      font-size: 1.3rem; color: var(--text-dim);
       max-width: 700px; margin: 0.75rem auto 1.7rem;
     }
     .cta-buttons { display: flex; gap: .8rem; justify-content: center; flex-wrap: wrap; }
@@ -220,7 +222,7 @@
 <body>
   <nav class="nav" aria-label="Primary">
     <div class="nav-content">
-      <div class="logo" aria-label="ZelixOS Home">ZelixOS</div>
+      <div class="logo" aria-label="ZelixOS Home" onclick="document.getElementById('top').scrollIntoView({ behavior: 'smooth', block: 'start' });">ZelixOS</div>
 
       <div class="nav-right">
         <ul class="nav-links">
