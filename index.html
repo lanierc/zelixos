@@ -247,7 +247,7 @@
       </p>
       <div class="cta-buttons">
         <a href="#download" class="btn btn-primary">Download Now</a>
-        <a href="#features" class="btn btn-secondary">Learn More</a>
+        <a href="about.html#about-os-title" class="btn btn-secondary">Learn More</a>
       </div>
     </div>
   </section>
@@ -339,15 +339,57 @@
     </div>
   </section>
 
-  <section id="download" style="text-align:center; padding: 4rem 1.25rem;">
-    <h2 class="section-title">Ready to Experience ZelixOS?</h2>
-    <p style="color: var(--text-dim); margin-bottom: 1.4rem; max-width: 600px; margin-left: auto; margin-right: auto;">
-      Join the community and discover what makes ZelixOS special. Free, open-source, and community-supported.
+  <section id="download" style="padding:5rem 2rem;">
+    <h2 class="section-title" style="text-align:center;">Downloads</h2>
+    <p style="color: var(--text-dim); text-align:center; max-width:720px; margin:0 auto 2rem;">
+      En güncel kararlı sürümü indir. ISO’ları yazdırırken <strong>Rufus</strong>, <strong>Balena Etcher</strong> veya <strong>Ventoy</strong> kullanabilirsin.
     </p>
-    <a href="https://yasirpeker1212.github.io/zelixos/" class="btn btn-primary" style="display:inline-block;" target="_blank" rel="noopener noreferrer">
-      Download ZelixOS
-    </a>
+  
+    <div style="max-width:1100px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:1.25rem;">
+      <!-- v0.3 (Latest) -->
+      <article style="background:rgba(255,255,255,.02); border:1px solid rgba(99,102,241,.2); border-radius:16px; padding:1.5rem;">
+        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:.75rem;">
+          <h3 style="margin:0; font-size:1.25rem;">ZelixOS 0.3 <span style="font-size:.8rem; padding:.15rem .5rem; border:1px solid var(--primary); border-radius:999px; color:var(--primary);">Latest</span></h3>
+          <span style="color:var(--text-dim); font-size:.9rem;">AMD64 • ~2.1 GB</span>
+        </div>
+        <ul style="margin:.25rem 0 1rem 1rem; color:var(--text-dim); line-height:1.7;">
+          <li>Yeni karşılama (Welcome) akışı</li>
+          <li>Öntanımlı uygulama ayarlarında iyileştirmeler</li>
+          <li>Hata düzeltmeleri ve performans</li>
+        </ul>
+        <div style="display:flex; gap:.6rem; flex-wrap:wrap;">
+          <!-- Bu URL’leri kendi host’una göre değiştir -->
+          <a class="btn btn-primary" href="/downloads/zelixos-0.3.iso" download>Download ISO</a>
+          <a class="btn btn-secondary" href="/downloads/zelixos-0.3.sha256">SHA256</a>
+          <a class="btn btn-secondary" href="/releases/0.3.html">Release Notes</a>
+        </div>
+      </article>
+  
+      <!-- v0.2 -->
+      <article style="background:rgba(255,255,255,.02); border:1px solid rgba(99,102,241,.2); border-radius:16px; padding:1.5rem;">
+        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:.75rem;">
+          <h3 style="margin:0; font-size:1.25rem;">ZelixOS 0.2</h3>
+          <span style="color:var(--text-dim); font-size:.9rem;">AMD64 • ~2.0 GB</span>
+        </div>
+        <ul style="margin:.25rem 0 1rem 1rem; color:var(--text-dim); line-height:1.7;">
+          <li>İlk genel önizleme</li>
+          <li>Temel uygulama seti</li>
+        </ul>
+        <div style="display:flex; gap:.6rem; flex-wrap:wrap;">
+          <!-- Bu URL’leri kendi host’una göre değiştir -->
+          <a class="btn btn-primary" href="/downloads/zelixos-0.2.iso" download>Download ISO</a>
+          <a class="btn btn-secondary" href="/downloads/zelixos-0.2.sha256">SHA256</a>
+          <a class="btn btn-secondary" href="/releases/0.2.html">Release Notes</a>
+        </div>
+      </article>
+    </div>
+  
+    <!-- İsteğe bağlı: Kurulum kılavuzu linki -->
+    <p style="text-align:center; margin-top:2rem;">
+      <a href="wiki.html" style="text-decoration:none; color:var(--primary);">Kurulum kılavuzu için Wiki’yi ziyaret et →</a>
+    </p>
   </section>
+
 
   <footer>
     <p>&copy; 2025 ZelixOS by CyberPlus Studios. All rights reserved.</p>
