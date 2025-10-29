@@ -301,7 +301,7 @@
       const root=document.documentElement;
       const btn=document.getElementById('themeToggle');
 
-      function label(mode){ return mode==='light'?'☀️ Light' : mode==='dark'?'🌙 Dark' : '🌗 Theme'; }
+      function label(mode){ return mode==='light'?'☀️ Light' : mode==='dark'?'🌙 Dark' : '🌗 System Default'; }
       function apply(mode){ root.setAttribute('data-theme', mode); btn.textContent = label(mode); }
 
       const saved = localStorage.getItem(KEY) || 'auto';
