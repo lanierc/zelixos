@@ -564,7 +564,95 @@
     </p>
   </section>
 
-
+<!-- Gallery Section -->
+  <section id="gallery" aria-labelledby="gallery-title">
+    <h2 id="gallery-title" class="section-title">Gallery</h2>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <div class="gallery-placeholder">🖼️</div>
+        <div class="gallery-caption">
+          <h3>Desktop Environment</h3>
+          <p>Modern KDE Plasma interface</p>
+        </div>
+      </div>
+      
+      <div class="gallery-item">
+        <div class="gallery-placeholder">🎨</div>
+        <div class="gallery-caption">
+          <h3>Customization</h3>
+          <p>Personalize your workspace</p>
+        </div>
+      </div>
+      
+      <div class="gallery-item">
+        <div class="gallery-placeholder">⚙️</div>
+        <div class="gallery-caption">
+          <h3>System Tools</h3>
+          <p>Powerful built-in utilities</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Testimonials Section -->
+  <section id="testimonials" aria-labelledby="testimonials-title">
+    <h2 id="testimonials-title" class="section-title">What Users Say</h2>
+    <div class="testimonials-container">
+      <div class="testimonials-slider">
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            "ZelixOS made my transition to Linux incredibly smooth. The KDE interface is intuitive and everything just works out of the box!"
+          </div>
+          <div class="testimonial-author">
+            <div class="author-avatar">JD</div>
+            <div class="author-info">
+              <h4>John Doe</h4>
+              <p>Software Developer</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            "Finally, a Linux distro that doesn't feel like rocket science. ZelixOS is perfect for beginners and power users alike."
+          </div>
+          <div class="testimonial-author">
+            <div class="author-avatar">AS</div>
+            <div class="author-info">
+              <h4>Alice Smith</h4>
+              <p>Graphic Designer</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            "The performance is outstanding! My old laptop feels like new again. ZelixOS is lightweight yet feature-rich."
+          </div>
+          <div class="testimonial-author">
+            <div class="author-avatar">MB</div>
+            <div class="author-info">
+              <h4>Mike Brown</h4>
+              <p>System Administrator</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-dots">
+        <span class="dot active" data-index="0"></span>
+        <span class="dot" data-index="1"></span>
+        <span class="dot" data-index="2"></span>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox-content">
+      <button class="lightbox-close" aria-label="Close">&times;</button>
+      <img src="" alt="Gallery image">
+    </div>
+  </div>
 
   <footer>
     <p>&copy; 2025 ZelixOS by CyberPlus Studios. All rights reserved.</p>
@@ -615,6 +703,60 @@
         const next = current === 'auto' ? 'light' : current === 'light' ? 'dark' : 'auto';
         localStorage.setItem(KEY, next);
         applyTheme(next);
+      });
+    })();
+        /* Testimonials Slider */
+    (function() {
+      const slider = document.querySelector('.testimonials-slider');
+      const dots = document.querySelectorAll('.dot');
+      if (!slider || !dots.length) return;
+      
+      let currentIndex = 0;
+      
+      function goToSlide(index) {
+        currentIndex = index;
+        slider.style.transform = `translateX(-${index * 100}%)`;
+        dots.forEach((dot, i) => {
+          dot.classList.toggle('active', i === index);
+        });
+      }
+      
+      dots.forEach(dot => {
+        dot.addEventListener('click', () => {
+          goToSlide(parseInt(dot.dataset.index));
+        });
+      });
+      
+      // Auto-advance every 5 seconds
+      setInterval(() => {
+        goToSlide((currentIndex + 1) % dots.length);
+      }, 5000);
+    })();
+    
+    /* Lightbox */
+    (function() {
+      const lightbox = document.getElementById('lightbox');
+      const galleryItems = document.querySelectorAll('.gallery-item');
+      if (!lightbox) return;
+      
+      galleryItems.forEach(item => {
+        item.addEventListener('click', () => {
+          const img = item.querySelector('img');
+          if (img) {
+            lightbox.querySelector('img').src = img.src;
+            lightbox.classList.add('active');
+          }
+        });
+      });
+      
+      lightbox.querySelector('.lightbox-close').addEventListener('click', () => {
+        lightbox.classList.remove('active');
+      });
+      
+      lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) {
+          lightbox.classList.remove('active');
+        }
       });
     })();
   </script>
