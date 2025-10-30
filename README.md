@@ -2,7 +2,7 @@
   <img src="/assets/banner.png" alt="ZelixOS Banner" width="80%">
 </p>
 
-<h1 align="center">🧭 ZelixOS</h1>
+<h1 align="center">ZelixOS</h1>
 <p align="center">
   A fast, clean, and user-friendly Linux distribution based on KDE Neon.
 </p>
@@ -45,13 +45,4 @@ ZelixOS aims to deliver the perfect balance between simplicity and power — ide
 
 💾 **Download:** [lanierc.github.io/zelixos#downloads](https://lanierc.github.io/zelixos#downloads)
 
----
 
-## 🧩 For Developers
-
-### Build from Source (ArchISO method)
-
-```bash
-git clone https://github.com/lanierc/zelixos.git
-cd zelixos
-sudo ./build.sh
