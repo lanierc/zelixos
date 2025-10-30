@@ -4,7 +4,7 @@
 
 <h1 align="center">ZelixOS</h1>
 <p align="center">
-  A fast, clean, and user-friendly Linux distribution based on KDE Neon.
+  A fast, clean, and user-friendly Linux distribution based on Ubuntu.
 </p>
 
 <p align="center">
@@ -18,7 +18,7 @@
 
 ## 🚀 About ZelixOS
 
-**ZelixOS** is a KDE Neon–based Linux distribution that blends stability, performance, and elegant design.  
+**ZelixOS** is a Ubuntu–based Linux distribution that blends stability, performance, and elegant design.  
 It’s crafted for users who want a smooth, modern desktop experience with optimized performance and essential productivity tools built right in.
 
 ZelixOS aims to deliver the perfect balance between simplicity and power — ideal for both everyday use and professional workflows.
@@ -41,7 +41,7 @@ ZelixOS aims to deliver the perfect balance between simplicity and power — ide
 
 | Version | Codename | Status | Year |
 |----------|-----------|--------|------|
-| **0.3** | **Crescent** | Stable | 2025 |
+| **0.3** | **Metavision** | Stable | 2025 |
 
 💾 **Download:** [lanierc.github.io/zelixos#downloads](https://lanierc.github.io/zelixos#download)
 
