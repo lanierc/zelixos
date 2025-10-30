@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Bug - ZelixOS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #0a0b0d;
+            color: #e4e4e7;
+            min-height: 100vh;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        /* Animated gradient background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(76, 0, 255, 0.1) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        nav {
+            background: rgba(10, 11, 13, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1.5rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #7877c6 0%, #4c00ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #7877c6 0%, #4c00ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+            letter-spacing: -1px;
+        }
+
+        .subtitle {
+            color: #a1a1aa;
+            font-size: 1.25rem;
+            font-weight: 400;
+        }
+
+        .card {
+            background: rgba(24, 24, 27, 0.6);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 50px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, rgba(120, 119, 198, 0.1) 0%, rgba(76, 0, 255, 0.1) 100%);
+            border: 1px solid rgba(120, 119, 198, 0.3);
+            padding: 20px;
+            border-radius: 16px;
+            margin-bottom: 40px;
+        }
+
+        .info-box p {
+            color: #d4d4d8;
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 28px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #e4e4e7;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 14px 18px;
+            background: rgba(39, 39, 42, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            color: #e4e4e7;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #7877c6;
+            background: rgba(39, 39, 42, 1);
+            box-shadow: 0 0 0 3px rgba(120, 119, 198, 0.1);
+        }
+
+        input::placeholder, textarea::placeholder {
+            color: #71717a;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23a1a1aa' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 18px center;
+            padding-right: 45px;
+        }
+
+        option {
+            background: #18181b;
+            color: #e4e4e7;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #7877c6 0%, #4c00ff 100%);
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(120, 119, 198, 0.3);
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(120, 119, 198, 0.4);
+        }
+
+        .btn-submit:active {
+            transform: translateY(0);
+        }
+
+        .required {
+            color: #ef4444;
+        }
+
+        .success-message {
+            display: none;
+            background: rgba(34, 197, 94, 0.15);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            color: #4ade80;
+            padding: 18px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .error-message {
+            display: none;
+            background: rgba(239, 68, 68, 0.15);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #f87171;
+            padding: 18px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #71717a;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            .card {
+                padding: 30px 25px;
+            }
+
+            .container {
+                padding: 40px 15px;
+            }
+
+            nav {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-content">
+            <div class="logo">ZelixOS</div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header>
+            <h1>🐛 Bug Report</h1>
+            <p class="subtitle">Help us make ZelixOS better</p>
+        </header>
+
+        <div class="card">
+            <div class="info-box">
+                <p>Found a bug or issue? We appreciate your feedback! Please fill out the form below with as much detail as possible. Your report will be sent directly to our development team.</p>
+            </div>
+
+            <div class="success-message" id="successMessage">
+                ✅ Your report has been sent successfully! Thank you for helping improve ZelixOS.
+            </div>
+
+            <div class="error-message" id="errorMessage">
+                ❌ An error occurred. Please try again.
+            </div>
+
+            <form id="bugForm">
+                <div class="form-group">
+                    <label for="name">Your Name <span class="required">*</span></label>
+                    <input type="text" id="name" name="name" required placeholder="John Doe">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address <span class="required">*</span></label>
+                    <input type="email" id="email" name="email" required placeholder="example@email.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="bugType">Issue Type <span class="required">*</span></label>
+                    <select id="bugType" name="bugType" required>
+                        <option value="">Select an option...</option>
+                        <option value="Bug/Error">Bug/Error</option>
+                        <option value="Performance Issue">Performance Issue</option>
+                        <option value="Installation Error">Installation Error</option>
+                        <option value="Graphics Problem">Graphics Problem</option>
+                        <option value="Application Crash">Application Crash</option>
+                        <option value="Network/Internet Issue">Network/Internet Issue</option>
+                        <option value="Hardware Compatibility">Hardware Compatibility</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="severity">Severity Level <span class="required">*</span></label>
+                    <select id="severity" name="severity" required>
+                        <option value="">Select an option...</option>
+                        <option value="Low">Low - Minor inconvenience</option>
+                        <option value="Medium">Medium - Affects some functionality</option>
+                        <option value="High">High - Major features unavailable</option>
+                        <option value="Critical">Critical - System unusable</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="version">ZelixOS Version</label>
+                    <input type="text" id="version" name="version" placeholder="e.g., 1.0.2">
+                </div>
+
+                <div class="form-group">
+                    <label for="subject">Subject <span class="required">*</span></label>
+                    <input type="text" id="subject" name="subject" required placeholder="Brief summary of the issue">
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Detailed Description <span class="required">*</span></label>
+                    <textarea id="description" name="description" required placeholder="Please describe the issue in detail. What happened? When does it occur? Are there any error messages?"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="steps">Steps to Reproduce</label>
+                    <textarea id="steps" name="steps" placeholder="1. First step&#10;2. Second step&#10;3. Third step&#10;4. Bug occurs"></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit">📤 Send Report</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 ZelixOS - CyberPlus Studios. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById('bugForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                bugType: document.getElementById('bugType').value,
+                severity: document.getElementById('severity').value,
+                version: document.getElementById('version').value,
+                subject: document.getElementById('subject').value,
+                description: document.getElementById('description').value,
+                steps: document.getElementById('steps').value
+            };
+
+            const emailBody = `
+ZelixOS Bug Report
+
+Name: ${formData.name}
+Email: ${formData.email}
+Issue Type: ${formData.bugType}
+Severity: ${formData.severity}
+ZelixOS Version: ${formData.version || 'Not specified'}
+
+SUBJECT: ${formData.subject}
+
+DETAILED DESCRIPTION:
+${formData.description}
+
+STEPS TO REPRODUCE:
+${formData.steps || 'Not specified'}
+
+---
+This report was submitted via the ZelixOS bug report form.
+            `.trim();
+
+            const mailtoLink = `mailto:yasirpekerr1212@gmail.com?subject=ZelixOS Bug Report: ${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(emailBody)}`;
+            
+            window.location.href = mailtoLink;
+            
+            document.getElementById('successMessage').style.display = 'block';
+            document.getElementById('bugForm').reset();
+            
+            setTimeout(() => {
+                document.getElementById('successMessage').style.display = 'none';
+            }, 5000);
+        });
+    </script>
+</body>
+</html>
