@@ -41,7 +41,8 @@ ZelixOS aims to deliver the perfect balance between simplicity and power — ide
 
 | Version | Codename | Status | Year |
 |----------|-----------|--------|------|
-| **0.3** | **Metavision** | Stable | 2025 |
+| **0.3** | **Metavision** | Stable | 2025 Q3 |
+| **0.2** | **Glassify** | Unstable | 2025 Q2 |
 
 💾 **Download:** [lanierc.github.io/zelixos#downloads](https://lanierc.github.io/zelixos#download)
 
