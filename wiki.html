@@ -173,6 +173,13 @@
             color: var(--text);
         }
 
+        .article-section h4 {
+            font-size: 1.25rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--text);
+        }
+
         .article-section p {
             color: var(--text-dim);
             margin-bottom: 1rem;
@@ -200,6 +207,15 @@
             color: var(--primary);
             margin-bottom: 0.5rem;
             font-size: 1.1rem;
+            margin-top: 0;
+        }
+
+        .info-card.warning h4 {
+            color: #f59e0b;
+        }
+
+        .info-card.success h4 {
+            color: #10b981;
         }
 
         .code-block {
@@ -597,6 +613,155 @@ sudo apt upgrade
                 </div>
             </section>
 
+            <section class="article-section" id="welcome-app">
+                <h2>Welcome Application</h2>
+                <p>
+                    The ZelixOS Welcome Application is your gateway to getting started with the system. It automatically launches 
+                    on first boot and provides a guided tour of essential features and settings.
+                </p>
+
+                <h3>What It Offers</h3>
+                <ul>
+                    <li>Quick system overview and tour</li>
+                    <li>Links to documentation and community resources</li>
+                    <li>Quick access to system settings</li>
+                    <li>Shortcut to Zelix Essentials for software installation</li>
+                    <li>Tips and tricks for new Linux users</li>
+                    <li>System information display</li>
+                </ul>
+
+                <h3>Accessing Welcome App</h3>
+                <p>
+                    If you've closed the Welcome Application, you can always reopen it from the application menu or by running:
+                </p>
+                <div class="code-block">
+                    <code>zelix-welcome</code>
+                </div>
+
+                <div class="info-card success">
+                    <h4>✓ First Time User?</h4>
+                    <p>Take advantage of the Welcome Application's guided tour. It's designed to help you feel comfortable 
+                    with ZelixOS in just a few minutes!</p>
+                </div>
+            </section>
+
+            <section class="article-section" id="kde-plasma">
+                <h2>KDE Plasma Desktop</h2>
+                <p>
+                    ZelixOS uses KDE Plasma as its desktop environment, providing a beautiful, modern, and highly customizable interface.
+                </p>
+
+                <h3>Key Features</h3>
+                <ul>
+                    <li>Intuitive and familiar interface for Windows users</li>
+                    <li>Powerful widgets and desktop effects</li>
+                    <li>Extensive customization options</li>
+                    <li>Integrated file manager (Dolphin)</li>
+                    <li>Built-in screenshot and screen recording tools</li>
+                </ul>
+
+                <h3>Basic Navigation</h3>
+                <ul>
+                    <li><strong>Application Launcher:</strong> Click the bottom-left icon or press Super/Meta key</li>
+                    <li><strong>Task Manager:</strong> Shows running applications in the panel</li>
+                    <li><strong>System Tray:</strong> Access system settings, notifications, and quick settings</li>
+                    <li><strong>Activities:</strong> Organize your workflow with virtual desktops</li>
+                </ul>
+
+                <h3>Useful Keyboard Shortcuts</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Shortcut</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Meta (Super)</strong></td>
+                            <td>Open application launcher</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Meta + D</strong></td>
+                            <td>Show desktop</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Meta + E</strong></td>
+                            <td>Open file manager</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Ctrl + Alt + T</strong></td>
+                            <td>Open terminal</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Ctrl + Alt + L</strong></td>
+                            <td>Lock screen</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Print Screen</strong></td>
+                            <td>Take screenshot</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Customizing Your Panel</h3>
+                <ol>
+                    <li>Right-click on the panel</li>
+                    <li>Select "Enter Edit Mode"</li>
+                    <li>Add, remove, or rearrange widgets</li>
+                    <li>Adjust panel height and position</li>
+                    <li>Click "Exit Edit Mode" when done</li>
+                </ol>
+            </section>
+
+            <section class="article-section" id="themes">
+                <h2>Themes & Icons</h2>
+                <p>
+                    Personalize your ZelixOS experience with custom themes, icons, and color schemes.
+                </p>
+
+                <h3>Changing Themes</h3>
+                <ol>
+                    <li>Open System Settings</li>
+                    <li>Go to Appearance → Global Theme</li>
+                    <li>Browse available themes or download new ones</li>
+                    <li>Click "Apply" to use a theme</li>
+                </ol>
+
+                <h3>Installing New Themes</h3>
+                <p>You can download themes directly from within System Settings:</p>
+                <ol>
+                    <li>Open System Settings → Appearance</li>
+                    <li>Choose the category (Global Theme, Plasma Style, Application Style, etc.)</li>
+                    <li>Click "Get New..." button</li>
+                    <li>Browse and install themes from the KDE Store</li>
+                </ol>
+
+                <h3>Popular Theme Collections</h3>
+                <ul>
+                    <li><strong>Breeze Dark:</strong> Default dark theme, clean and modern</li>
+                    <li><strong>Nordic:</strong> Beautiful nordic-inspired color palette</li>
+                    <li><strong>Sweet:</strong> Vibrant purple and pink theme</li>
+                    <li><strong>Materia:</strong> Material design inspired theme</li>
+                    <li><strong>Arc:</strong> Flat theme with transparent elements</li>
+                </ul>
+
+                <h3>Icon Themes</h3>
+                <p>Change your icon theme in System Settings → Appearance → Icons:</p>
+                <ul>
+                    <li><strong>Papirus:</strong> Clean, colorful icons</li>
+                    <li><strong>Tela:</strong> Rounded, modern icon set</li>
+                    <li><strong>Qogir:</strong> Flat, colorful design</li>
+                    <li><strong>Candy:</strong> Colorful gradient icons</li>
+                </ul>
+
+                <div class="info-card">
+                    <h4>Color Schemes</h4>
+                    <p>You can also create custom color schemes in System Settings → Appearance → Colors. 
+                    Mix and match different accent colors to create your perfect setup!</p>
+                </div>
+            </section>
+
             <section class="article-section" id="terminal">
                 <h2>Essential Terminal Commands</h2>
                 <p>
@@ -660,7 +825,11 @@ htop
 ip link<br><br>
 
 # Restart network manager<br>
-sudo systemctl restart NetworkManager
+sudo systemctl restart NetworkManager<br><br>
+
+# Check if WiFi is blocked<br>
+rfkill list<br>
+sudo rfkill unblock wifi
                     </code>
                 </div>
 
@@ -671,9 +840,118 @@ sudo systemctl restart NetworkManager
                     <li>Try switching to a different kernel if issues persist</li>
                 </ul>
 
+                <h3>Audio Not Working</h3>
+                <div class="code-block">
+                    <code>
+# Restart PulseAudio<br>
+pulseaudio --kill<br>
+pulseaudio --start<br><br>
+
+# Or use PipeWire<br>
+systemctl --user restart pipewire pipewire-pulse
+                    </code>
+                </div>
+
+                <h3>Package Manager Issues</h3>
+                <div class="code-block">
+                    <code>
+# Fix broken packages<br>
+sudo apt --fix-broken install<br><br>
+
+# Reconfigure packages<br>
+sudo dpkg --configure -a<br><br>
+
+# Clean package cache<br>
+sudo apt clean<br>
+sudo apt autoclean
+                    </code>
+                </div>
+
+                <h3>Performance Issues</h3>
+                <ul>
+                    <li>Check system resources with <code>htop</code></li>
+                    <li>Disable desktop effects in System Settings if using older hardware</li>
+                    <li>Run Zelix Cleaner to free up disk space</li>
+                    <li>Check for runaway processes consuming CPU/RAM</li>
+                </ul>
+
                 <div class="info-card">
                     <h4>Need More Help?</h4>
                     <p>Join our community forum or Discord server for additional support from the ZelixOS community!</p>
+                </div>
+            </section>
+
+            <section class="article-section" id="development">
+                <h2>Development on ZelixOS</h2>
+                <p>
+                    ZelixOS provides an excellent environment for developers with pre-configured tools and easy access 
+                    to development packages.
+                </p>
+
+                <h3>Development Tools Available</h3>
+                <ul>
+                    <li><strong>Code Editors:</strong> VS Code, Kate, Vim, Nano</li>
+                    <li><strong>IDEs:</strong> JetBrains suite, Eclipse, Android Studio</li>
+                    <li><strong>Version Control:</strong> Git, SVN</li>
+                    <li><strong>Compilers:</strong> GCC, Clang, Rust, Go</li>
+                    <li><strong>Interpreters:</strong> Python, Node.js, Ruby, PHP</li>
+                    <li><strong>Databases:</strong> PostgreSQL, MySQL, MongoDB, Redis</li>
+                </ul>
+
+                <h3>Setting Up Development Environment</h3>
+                
+                <h4>Python Development</h4>
+                <div class="code-block">
+                    <code>
+# Install Python and pip<br>
+sudo apt install python3 python3-pip python3-venv<br><br>
+
+# Create virtual environment<br>
+python3 -m venv myproject<br>
+source myproject/bin/activate
+                    </code>
+                </div>
+
+                <h4>Node.js Development</h4>
+                <div class="code-block">
+                    <code>
+# Install Node.js and npm<br>
+sudo apt install nodejs npm<br><br>
+
+# Or use nvm for version management<br>
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash<br>
+nvm install --lts
+                    </code>
+                </div>
+
+                <h4>Web Development</h4>
+                <div class="code-block">
+                    <code>
+# Install Apache and PHP<br>
+sudo apt install apache2 php libapache2-mod-php<br><br>
+
+# Or install LAMP stack<br>
+sudo apt install lamp-server^
+                    </code>
+                </div>
+
+                <h3>Docker Support</h3>
+                <div class="code-block">
+                    <code>
+# Install Docker<br>
+sudo apt install docker.io<br>
+sudo systemctl enable docker<br>
+sudo usermod -aG docker $USER<br><br>
+
+# Install Docker Compose<br>
+sudo apt install docker-compose
+                    </code>
+                </div>
+
+                <div class="info-card success">
+                    <h4>✓ Pro Tip</h4>
+                    <p>Use Zelix Essentials to quickly install popular development tools. It handles all dependencies 
+                    and configurations automatically!</p>
                 </div>
             </section>
         </main>
