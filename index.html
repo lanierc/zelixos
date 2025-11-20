@@ -203,7 +203,7 @@
 
     /* ---------- Hero Section with Animated Background ---------- */
     .hero {
-      min-height: 100vh; 
+      min-height: calc(100vh - 70px);
       display: grid; 
       place-items: center; 
       text-align: center;
@@ -216,7 +216,7 @@
     /* Animated gradient background - FIXED to cover entire hero */
     .hero::before {
       content: '';
-      position: absolute;
+      position: fixed;
       top: 0;
       left: 0;
       right: 0;
