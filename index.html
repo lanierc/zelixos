@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="color-scheme" content="dark light"/>
-  <link rel="icon" type="image/x-icon" href="icons/favicon.ico"/>
   <title>ZelixOS — Vision of the Future Starts Here</title>
 
   <!-- Inter font -->
@@ -94,6 +93,52 @@
       --muted-strong: rgba(99, 102, 241, 0.12) !important;
     }
 
+    /* ---------- Animations ---------- */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes particleFloat {
+      0%, 100% { transform: translate(0, 0); }
+      25% { transform: translate(10px, -10px); }
+      50% { transform: translate(-5px, -20px); }
+      75% { transform: translate(-10px, -10px); }
+    }
+
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .animate-on-scroll.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     /* ---------- Layout ---------- */
     .nav {
       position: fixed; inset: 0 0 auto 0; width: 100%;
@@ -101,6 +146,7 @@
       backdrop-filter: blur(10px);
       z-index: 1000;
       border-bottom: 1px solid var(--border);
+      animation: fadeIn 0.5s ease-out;
     }
     .nav-content {
       max-width: 1400px; margin: 0 auto; padding: 0.9rem 1rem;
@@ -112,15 +158,24 @@
       -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
       letter-spacing: 0.2px;
       cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .logo:hover {
+      transform: scale(1.05);
     }
     .nav-right { display: flex; align-items: center; gap: 1rem; }
 
     .nav-links { display: flex; gap: 1.25rem; list-style: none; }
     .nav-links a {
       color: var(--text); text-decoration: none; font-weight: 500;
-      padding: .4rem .6rem; border-radius: 8px; transition: background .2s, color .2s;
+      padding: .4rem .6rem; border-radius: 8px; transition: background .2s, color .2s, transform .2s;
+      display: inline-block;
     }
-    .nav-links a:hover { background: var(--muted-hover); color: var(--primary); }
+    .nav-links a:hover { 
+      background: var(--muted-hover); 
+      color: var(--primary);
+      transform: translateY(-2px);
+    }
 
     .theme-toggle {
       border: 1px solid var(--border);
@@ -130,42 +185,111 @@
       border-radius: 10px;
       cursor: pointer;
       font-weight: 600;
-      transition: background .2s, border-color .2s, transform .1s;
+      transition: background .2s, border-color .2s, transform .2s;
     }
-    .theme-toggle:active { transform: scale(0.98); }
-    .theme-toggle[aria-pressed="true"] { border-color: var(--border-strong); }
+    .theme-toggle:hover {
+      background: var(--muted-hover);
+      border-color: var(--border-strong);
+    }
+    .theme-toggle:active { transform: scale(0.95); }
 
     section { padding: 5rem 1.25rem; max-width: 1400px; margin: 0 auto; }
-    .section-title { text-align: center; font-size: clamp(1.8rem, 3.8vw, 2.5rem); font-weight: 800; margin-bottom: 2.2rem; }
+    .section-title { 
+      text-align: center; 
+      font-size: clamp(1.8rem, 3.8vw, 2.5rem); 
+      font-weight: 800; 
+      margin-bottom: 2.2rem;
+    }
 
+    /* ---------- Hero Section with Animated Background ---------- */
     .hero {
       min-height: 100dvh; display: grid; place-items: center; text-align: center;
       padding: 2rem 1.25rem; position: relative; overflow: hidden;
-      background:
-        radial-gradient(80% 60% at 50% 20%, color-mix(in oklab, var(--primary) 15%, transparent), transparent 60%),
-        var(--bg);
+      background: var(--bg);
     }
-    .hero-content { max-width: 900px; margin-top: 3.2rem; }
-    .hero h1 { font-size: clamp(2.2rem, 6vw, 4.2rem); font-weight: 900; line-height: 1.1; margin-bottom: 1rem; }
+
+    /* Animated gradient background */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 30%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+                  radial-gradient(circle at 80% 70%, rgba(6, 182, 212, 0.15) 0%, transparent 50%),
+                  radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+      background-size: 200% 200%;
+      animation: gradientMove 15s ease infinite;
+      z-index: 0;
+    }
+
+    /* Floating particles */
+    .hero-particle {
+      position: absolute;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.3), rgba(6, 182, 212, 0.3));
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .hero-content { 
+      max-width: 900px; 
+      margin-top: 3.2rem; 
+      position: relative;
+      z-index: 2;
+      animation: fadeInUp 0.8s ease-out;
+    }
+    .hero h1 { 
+      font-size: clamp(2.2rem, 6vw, 4.2rem); 
+      font-weight: 900; 
+      line-height: 1.1; 
+      margin-bottom: 1rem;
+      animation: fadeInUp 0.8s ease-out 0.2s both;
+    }
     .gradient-text {
       background: linear-gradient(135deg, var(--primary), var(--accent));
-      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+      background-size: 200% 200%;
+      -webkit-background-clip: text; 
+      background-clip: text; 
+      -webkit-text-fill-color: transparent;
+      animation: gradientMove 5s ease infinite;
     }
     .hero p {
       font-size: 1.3rem; color: var(--text-dim);
       max-width: 700px; margin: 0.75rem auto 1.7rem;
+      animation: fadeInUp 0.8s ease-out 0.4s both;
     }
-    .cta-buttons { display: flex; gap: .8rem; justify-content: center; flex-wrap: wrap; }
+    .cta-buttons { 
+      display: flex; 
+      gap: .8rem; 
+      justify-content: center; 
+      flex-wrap: wrap;
+      animation: fadeInUp 0.8s ease-out 0.6s both;
+    }
 
     .btn {
       padding: .9rem 1.4rem; border-radius: 10px; font-weight: 700; text-decoration: none;
-      border: 1px solid transparent; cursor: pointer; font-size: 1rem; transition: transform .15s, box-shadow .2s, background .2s, border-color .2s;
+      border: 1px solid transparent; cursor: pointer; font-size: 1rem; 
+      transition: transform .2s, box-shadow .3s, background .2s, border-color .2s;
+      display: inline-block;
     }
-    .btn:active { transform: translateY(1px); }
-    .btn-primary { background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: #fff; box-shadow: 0 12px 30px var(--shadow); }
-    .btn-primary:hover { box-shadow: 0 16px 40px color-mix(in oklab, var(--primary) 35%, transparent); }
-    .btn-secondary { background: var(--muted-strong); color: var(--primary); border-color: var(--border-strong); }
-    .btn-secondary:hover { background: var(--muted-hover); }
+    .btn:hover { transform: translateY(-2px); }
+    .btn:active { transform: translateY(0); }
+    .btn-primary { 
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark)); 
+      color: #fff; 
+      box-shadow: 0 12px 30px var(--shadow);
+    }
+    .btn-primary:hover { 
+      box-shadow: 0 16px 40px color-mix(in oklab, var(--primary) 35%, transparent);
+    }
+    .btn-secondary { 
+      background: var(--muted-strong); 
+      color: var(--primary); 
+      border-color: var(--border-strong);
+    }
+    .btn-secondary:hover { 
+      background: var(--muted-hover);
+      border-color: var(--primary);
+    }
 
     .features-grid {
       display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -176,18 +300,23 @@
       border: 1px solid var(--border);
       border-radius: 16px;
       padding: 1.5rem;
-      transition: transform .15s, border-color .2s, box-shadow .2s, background .2s;
+      transition: transform .3s ease, border-color .3s, box-shadow .3s, background .3s;
       box-shadow: 0 8px 24px var(--shadow);
     }
     .feature-card:hover {
-      transform: translateY(-4px);
+      transform: translateY(-8px);
       border-color: var(--border-strong);
-      box-shadow: 0 12px 34px var(--shadow);
+      box-shadow: 0 16px 40px var(--shadow);
+      background: color-mix(in oklab, var(--bg-elev), var(--primary) 3%);
     }
     .feature-icon {
       width: 56px; height: 56px; border-radius: 12px; display: grid; place-items: center;
       background: linear-gradient(135deg, var(--primary), var(--accent));
       color: #fff; font-size: 1.35rem; margin-bottom: 1rem;
+      transition: transform .3s ease;
+    }
+    .feature-card:hover .feature-icon {
+      transform: scale(1.1) rotate(5deg);
     }
     .feature-card h3 { font-size: 1.25rem; margin-bottom: .5rem; }
     .feature-card p { color: var(--text-dim); }
@@ -195,12 +324,18 @@
     .specs-table {
       max-width: 900px; margin: 2rem auto; background: var(--bg-elev);
       border: 1px solid var(--border); border-radius: 16px; overflow: hidden;
+      box-shadow: 0 8px 24px var(--shadow);
     }
     .specs-table table { width: 100%; border-collapse: collapse; }
-    .specs-table th, .specs-table td { padding: 1.1rem 1.25rem; text-align: left; border-bottom: 1px solid var(--border); }
+    .specs-table th, .specs-table td { 
+      padding: 1.1rem 1.25rem; 
+      text-align: left; 
+      border-bottom: 1px solid var(--border);
+      transition: background .2s;
+    }
     .specs-table th { background: var(--muted-strong); color: var(--primary); font-weight: 700; }
     .specs-table tr:last-child td { border-bottom: none; }
-    .specs-table tr:hover { background: var(--muted-hover); }
+    .specs-table tbody tr:hover { background: var(--muted-hover); }
 
     footer {
       background: var(--bg-muted); padding: 2.5rem 1.25rem; text-align: center; border-top: 1px solid var(--border);
@@ -209,8 +344,16 @@
     .footer-links {
       display: flex; justify-content: center; gap: 1.25rem; margin-top: 1rem; flex-wrap: wrap;
     }
-    .footer-links a { color: var(--text-dim); text-decoration: none; }
-    .footer-links a:hover { color: var(--primary); }
+    .footer-links a { 
+      color: var(--text-dim); 
+      text-decoration: none;
+      transition: color .2s, transform .2s;
+      display: inline-block;
+    }
+    .footer-links a:hover { 
+      color: var(--primary);
+      transform: translateY(-2px);
+    }
 
     /* ---------- Gallery ---------- */
     .gallery-grid {
@@ -225,13 +368,13 @@
       overflow: hidden;
       cursor: pointer;
       border: 1px solid var(--border);
-      transition: transform .3s, box-shadow .3s;
+      transition: transform .4s ease, box-shadow .4s ease, border-color .3s;
       aspect-ratio: 16/10;
       background: var(--bg-elev);
     }
     .gallery-item:hover {
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: 0 20px 50px var(--shadow);
+      transform: translateY(-12px) scale(1.03);
+      box-shadow: 0 24px 60px var(--shadow);
       border-color: var(--border-strong);
     }
     .gallery-item img {
@@ -239,10 +382,14 @@
       height: 100%;
       object-fit: cover;
       display: block;
+      transition: transform .4s ease;
+    }
+    .gallery-item:hover img {
+      transform: scale(1.1);
     }
     .gallery-placeholder {
       width: 100%;
-      height: 90%;
+      height: 100%;
       display: grid;
       place-items: center;
       background: linear-gradient(135deg, var(--muted-strong), var(--muted-hover));
@@ -254,11 +401,11 @@
       bottom: 0;
       left: 0;
       right: 0;
-      background: linear-gradient(transparent, rgba(0,0,0,0.8));
+      background: linear-gradient(transparent, rgba(0,0,0,0.85));
       color: white;
       padding: 2rem 1.25rem 1rem;
       transform: translateY(100%);
-      transition: transform .3s;
+      transition: transform .4s ease;
     }
     .gallery-item:hover .gallery-caption {
       transform: translateY(0);
@@ -274,12 +421,14 @@
       align-items: center;
       justify-content: center;
       padding: 2rem;
+      animation: fadeIn 0.3s ease;
     }
     .lightbox.active { display: flex; }
     .lightbox-content {
       max-width: 90vw;
       max-height: 90vh;
       position: relative;
+      animation: fadeInUp 0.3s ease;
     }
     .lightbox-content img {
       max-width: 100%;
@@ -299,7 +448,7 @@
       padding: 0.5rem;
       transition: transform .2s;
     }
-    .lightbox-close:hover { transform: scale(1.1); }
+    .lightbox-close:hover { transform: scale(1.2) rotate(90deg); }
 
     /* ---------- Testimonials ---------- */
     .testimonials-container {
@@ -310,7 +459,7 @@
     }
     .testimonials-slider {
       display: flex;
-      transition: transform 0.5s ease;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .testimonial-card {
       min-width: 100%;
@@ -342,6 +491,10 @@
       font-size: 1.5rem;
       color: white;
       font-weight: 700;
+      transition: transform .3s ease;
+    }
+    .testimonial-card:hover .author-avatar {
+      transform: scale(1.1);
     }
     .author-info h4 {
       margin: 0;
@@ -366,9 +519,22 @@
       cursor: pointer;
       transition: background .3s, transform .3s;
     }
+    .dot:hover {
+      transform: scale(1.2);
+    }
     .dot.active {
       background: var(--primary);
-      transform: scale(1.3);
+      transform: scale(1.4);
+    }
+
+    /* Download cards animation */
+    .download-card {
+      transition: transform .3s ease, box-shadow .3s ease, border-color .3s;
+    }
+    .download-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 16px 40px var(--shadow);
+      border-color: var(--primary) !important;
     }
 
     /* ---------- Responsive ---------- */
@@ -384,19 +550,16 @@
 <body>
   <nav class="nav" aria-label="Primary">
     <div class="nav-content">
-      <div class="logo" aria-label="ZelixOS Home" onclick="document.getElementById('top').scrollIntoView({ behavior: 'smooth', block: 'start' });">ZelixOS</div>
+      <div class="logo" aria-label="ZelixOS Home" onclick="scrollToTop()">ZelixOS</div>
 
       <div class="nav-right">
         <ul class="nav-links">
           <li><a href="#download">Download</a></li>
           <li><a href="#features">Features</a></li>
-          <li><a href="wiki.html">Wiki</a></li>
-          <li><a href="br.html">Report a Bug</a></li>
-          <li><a href="about.html">About</a></li>
           <li><a href="#gallery">Gallery</a></li>
         </ul>
 
-        <button id="themeToggle" class="theme-toggle" aria-pressed="false" aria-label="Toggle color theme">
+        <button id="themeToggle" class="theme-toggle" aria-label="Toggle color theme">
           🌗 Theme
         </button>
       </div>
@@ -412,54 +575,57 @@
       </p>
       <div class="cta-buttons">
         <a href="#download" class="btn btn-primary">Download Now</a>
-        <a href="about.html#about-os-title" class="btn btn-secondary">Learn More</a>
+        <a href="#features" class="btn btn-secondary">Learn More</a>
       </div>
     </div>
   </section>
 
   <section id="features" aria-labelledby="features-title">
-    <h2 id="features-title" class="section-title">Powerful Features</h2>
+    <h2 id="features-title" class="section-title animate-on-scroll">Powerful Features</h2>
     <div class="features-grid">
-      <div class="feature-card">
+      <div class="feature-card animate-on-scroll">
         <div class="feature-icon">🖥️</div>
         <h3>Modern Desktop</h3>
         <p>Experience a powerful and efficient workflow with customizable KDE Plasma desktop environment.</p>
       </div>
 
-      <div class="feature-card">
+      <div class="feature-card animate-on-scroll">
         <div class="feature-icon">📦</div>
         <h3>Pre-configured Apps</h3>
         <p>Get access to all the tools you need right after installation with our pre-configured application package.</p>
       </div>
 
-      <div class="feature-card">
+      <div class="feature-card animate-on-scroll">
         <div class="feature-icon">🌙</div>
         <h3>Dark & Light Mode</h3>
         <p>Easily switch between themes to reduce eye strain or match your environment and preference.</p>
       </div>
 
-      <div class="feature-card">
+      <div class="feature-card animate-on-scroll">
         <div class="feature-icon">💾</div>
         <h3>Zelix Backup</h3>
         <p>Keep your data safe with our simple and effective backup solution for system and personal files.</p>
       </div>
-      <div class="feature-card">
+      
+      <div class="feature-card animate-on-scroll">
         <div class="feature-icon">🗃️</div>
         <h3>Zelix Essentials</h3>
-        <p>Install any type of programs within seconds wiht Zelix Essentials. Fast and easy.</p>
+        <p>Install any type of programs within seconds with Zelix Essentials. Fast and easy.</p>
       </div>
-      <div class="feature-card">
+      
+      <div class="feature-card animate-on-scroll">
         <div class="feature-icon">🧹</div>
         <h3>Zelix Cleaner</h3>
         <p>Clean the temporary files or upgrade your pc with a click.</p>
       </div>
-      <div class="feature-card">
+      
+      <div class="feature-card animate-on-scroll">
         <div class="feature-icon">⚡</div>
         <h3>High Performance</h3>
         <p>Optimized structure delivers high performance even on low-end hardware. Fast boot and stable experience.</p>
       </div>
 
-      <div class="feature-card">
+      <div class="feature-card animate-on-scroll">
         <div class="feature-icon">👨‍💻</div>
         <h3>Developer Ready</h3>
         <p>Pre-integrated development tools including VS Code, Git, Python and more make software development easier.</p>
@@ -468,12 +634,12 @@
   </section>
 
   <section id="specs" aria-labelledby="specs-title">
-    <h2 id="specs-title" class="section-title">System Requirements</h2>
-    <p style="text-align:center; color: var(--text-dim); max-width:700px; margin:0 auto 1.2rem;">
+    <h2 id="specs-title" class="section-title animate-on-scroll">System Requirements</h2>
+    <p style="text-align:center; color: var(--text-dim); max-width:700px; margin:0 auto 1.2rem;" class="animate-on-scroll">
       Required system specifications to run ZelixOS smoothly
     </p>
 
-    <div class="specs-table" role="region" aria-label="System Requirements Table">
+    <div class="specs-table animate-on-scroll" role="region" aria-label="System Requirements Table">
       <table>
         <thead>
           <tr>
@@ -514,33 +680,13 @@
   </section>
 
   <section id="download" style="padding:5rem 2rem;">
-    <h2 class="section-title" style="text-align:center;">Downloads</h2>
-    <p style="color: var(--text-dim); text-align:center; max-width:720px; margin:0 auto 2rem;">
+    <h2 class="section-title animate-on-scroll" style="text-align:center;">Downloads</h2>
+    <p style="color: var(--text-dim); text-align:center; max-width:720px; margin:0 auto 2rem;" class="animate-on-scroll">
       Download the latest stable release. When flashing the ISO, you can use <strong>Rufus</strong>, <strong>Balena Etcher</strong>, or <strong>Ventoy</strong>.
     </p>
   
     <div style="max-width:1100px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:1.25rem;">
-      <!-- v0.3 (Latest) -->
-      <article style="background:rgba(255,255,255,.02); border:1px solid rgba(99,102,241,.2); border-radius:16px; padding:1.5rem;">
-        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:.75rem;">
-          <h3 style="margin:0; font-size:1.25rem;">ZelixOS 0.3 <span style="font-size:.8rem; padding:.15rem .5rem; border:1px solid var(--primary); border-radius:999px; color:var(--primary);">Latest</span></h3>
-          <span style="color:var(--text-dim); font-size:.9rem;">AMD64 • ~4.8 GB</span>
-        </div>
-        <ul style="margin:.25rem 0 1rem 1rem; color:var(--text-dim); line-height:1.7;">
-          <li>New Welcome flow</li>
-          <li>Improved default app settings</li>
-          <li>Bug fixes and performance improvements</li>
-        </ul>
-        <div style="display:flex; gap:.6rem; flex-wrap:wrap;">
-          <!-- Update these URLs according to your host -->
-          <a class="btn btn-primary" href="https://drive.google.com/file/d/1AuBvTMUaMpoOZc8lts38zjYAE1i_b2hZ/view?usp=sharing" download>Download ISO</a>
-          <a class="btn btn-secondary" href="/downloads/zelixos-0.3.sha256">SHA256</a>
-          <a class="btn btn-secondary" href="https://github.com/lanierc/zelixos/releases/tag/ZelixOS">Release Notes</a>
-        </div>
-      </article>
-  
-      <!-- v0.2 -->
-      <article style="background:rgba(255,255,255,.02); border:1px solid rgba(99,102,241,.2); border-radius:16px; padding:1.5rem;">
+      <article class="download-card animate-on-scroll" style="background:rgba(255,255,255,.02); border:1px solid rgba(99,102,241,.2); border-radius:16px; padding:1.5rem;">
         <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:.75rem;">
           <h3 style="margin:0; font-size:1.25rem;">ZelixOS 0.2</h3>
           <span style="color:var(--text-dim); font-size:.9rem;">AMD64 • ~4.0 GB</span>
@@ -551,27 +697,18 @@
           <li>Not recommended</li>
         </ul>
         <div style="display:flex; gap:.6rem; flex-wrap:wrap;">
-          <!-- Update these URLs according to your host -->
-          <a class="btn btn-primary" href="https://drive.google.com/file/d/16eX8QS5Q9yxZeOL-ocVq9pxJ7IPJSkFu/view?usp=drive_link" download>Download ISO</a>
-          <a class="btn btn-secondary" href="/downloads/zelixos-0.2.sha256">SHA256</a>
-          <a class="btn btn-secondary" href="/releases/0.2.html">Release Notes</a>
+          <a class="btn btn-primary" href="https://drive.google.com/file/d/16eX8QS5Q9yxZeOL-ocVq9pxJ7IPJSkFu/view?usp=drive_link">Download ISO</a>
         </div>
       </article>
     </div>
-  
-    <!-- Optional: Installation guide link -->
-    <p style="text-align:center; margin-top:2rem;">
-      <a href="wiki.html" style="text-decoration:none; color:var(--primary);">Visit the Wiki for installation guide →</a>
-    </p>
   </section>
 
-<!-- Gallery Section -->
   <section id="gallery" aria-labelledby="gallery-title">
-    <h2 id="gallery-title" class="section-title">Gallery</h2>
+    <h2 id="gallery-title" class="section-title animate-on-scroll">Gallery</h2>
     <div class="gallery-grid">
-      <div class="gallery-item">
+      <div class="gallery-item animate-on-scroll">
         <div class="gallery-placeholder">
-          <img src="icons/desktop.png" alt="Galeri Görseli" style="width:100%; height:auto; border-radius:10px;">
+          🖥️
         </div>
         <div class="gallery-caption">
           <h3>Desktop Environment</h3>
@@ -579,9 +716,9 @@
         </div>
       </div>
       
-      <div class="gallery-item">
+      <div class="gallery-item animate-on-scroll">
         <div class="gallery-placeholder">
-          <img src="screenshots/dark-theme.png" alt="Galeri Görseli" style="width:100%; height:auto; border-radius:10px;">
+          🎨
         </div>
         <div class="gallery-caption">
           <h3>Customization</h3>
@@ -589,9 +726,9 @@
         </div>
       </div>
       
-      <div class="gallery-item">
+      <div class="gallery-item animate-on-scroll">
         <div class="gallery-placeholder">
-          <img src="screenshots/app-menu.png" alt="Galeri Görseli" style="width:100%; height:auto; border-radius:10px;">
+          🛠️
         </div>
         <div class="gallery-caption">
           <h3>System Tools</h3>
@@ -601,10 +738,9 @@
     </div>
   </section>
   
-  <!-- Testimonials Section -->
   <section id="testimonials" aria-labelledby="testimonials-title">
-    <h2 id="testimonials-title" class="section-title">What Users Say</h2>
-    <div class="testimonials-container">
+    <h2 id="testimonials-title" class="section-title animate-on-scroll">What Users Say</h2>
+    <div class="testimonials-container animate-on-scroll">
       <div class="testimonials-slider">
         <div class="testimonial-card">
           <div class="testimonial-content">
@@ -653,7 +789,6 @@
     </div>
   </section>
   
-  <!-- Lightbox -->
   <div class="lightbox" id="lightbox">
     <div class="lightbox-content">
       <button class="lightbox-close" aria-label="Close">&times;</button>
@@ -664,11 +799,11 @@
   <footer>
     <p>&copy; 2025 ZelixOS by CyberPlus Studios. All rights reserved.</p>
     <div class="footer-links">
-      <a href="wiki.html" aria-label="Documentation">Documentation</a>
+      <a href="#" aria-label="Documentation">Documentation</a>
       <a href="#" aria-label="Community">Community</a>
       <a href="https://github.com/yasirpeker1212/zelixos/" aria-label="GitHub">GitHub</a>
       <a href="#" aria-label="Support">Support</a>
-      <a href="pp.html" aria-label="Privacy Policy">Privacy Policy</a>
+      <a href="#" aria-label="Privacy Policy">Privacy Policy</a>
     </div>
   </footer>
 
@@ -677,6 +812,7 @@
     document.querySelectorAll('a[href^="#"]').forEach(a => {
       a.addEventListener('click', e => {
         const id = a.getAttribute('href');
+        if (id === '#') return;
         const target = document.querySelector(id);
         if (target) {
           e.preventDefault();
@@ -686,26 +822,26 @@
       });
     });
 
-    /* Theme toggle (auto / light / dark with persistence) */
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    /* Theme toggle */
     (function () {
       const root = document.documentElement;
       const btn = document.getElementById('themeToggle');
       const KEY = 'zelixos-theme';
 
       function applyTheme(mode) {
-        // mode: 'light' | 'dark' | 'auto'
         root.setAttribute('data-theme', mode);
-        btn.setAttribute('aria-pressed', mode !== 'auto'); // pressed = user forced
         btn.textContent = mode === 'light' ? '☀️ Light'
                          : mode === 'dark'  ? '🌙 Dark'
                          : '🌗 System Default';
       }
 
-      // Load saved
       const saved = localStorage.getItem(KEY) || 'auto';
       applyTheme(saved);
 
-      // Toggle order: auto -> light -> dark -> auto...
       btn.addEventListener('click', () => {
         const current = root.getAttribute('data-theme') || 'auto';
         const next = current === 'auto' ? 'light' : current === 'light' ? 'dark' : 'auto';
@@ -713,7 +849,8 @@
         applyTheme(next);
       });
     })();
-        /* Testimonials Slider */
+
+    /* Testimonials Slider */
     (function() {
       const slider = document.querySelector('.testimonials-slider');
       const dots = document.querySelectorAll('.dot');
@@ -735,7 +872,6 @@
         });
       });
       
-      // Auto-advance every 5 seconds
       setInterval(() => {
         goToSlide((currentIndex + 1) % dots.length);
       }, 5000);
@@ -766,6 +902,54 @@
           lightbox.classList.remove('active');
         }
       });
+    })();
+
+    /* Scroll animations */
+    (function() {
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll('.animate-on-scroll').forEach(el => {
+        observer.observe(el);
+      });
+    })();
+
+    /* Animated particles in hero */
+    (function() {
+      const hero = document.querySelector('.hero');
+      if (!hero) return;
+
+      const particleCount = 15;
+      
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'hero-particle';
+        
+        const size = Math.random() * 4 + 2;
+        const x = Math.random() * 100;
+        const y = Math.random() * 100;
+        const duration = Math.random() * 10 + 10;
+        const delay = Math.random() * 5;
+        
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        particle.style.left = `${x}%`;
+        particle.style.top = `${y}%`;
+        particle.style.animation = `particleFloat ${duration}s ease-in-out ${delay}s infinite`;
+        particle.style.opacity = Math.random() * 0.5 + 0.3;
+        
+        hero.appendChild(particle);
+      }
     })();
   </script>
 </body>
